@@ -24,7 +24,6 @@ def extract single
 			el.text.strip
 		end.join "\n"
 		@db.execute("INSERT INTO `UNILEIPZIG` (DATE, LINK, CONTENT) VALUES(?,?,?);", "#{date}", "#{link}", "#{plain}")
-		puts "#{i+1} done"
 		break if single
 	end
 end
