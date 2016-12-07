@@ -11,7 +11,6 @@ module PrivacyExtractor
 	class << self
 		attr_accessor :mode, :url, :table_name, :xpath, :plain_block
 		attr_accessor :own_archive, :archive_xpath, :archive_url_block, :archive_date_block
-		attr_accessor :delay
 	end
 
 	self.mode = :fetch
@@ -23,7 +22,6 @@ module PrivacyExtractor
 	self.archive_xpath = "//a"
 	self.archive_url_block = -> (link) {self.url + link}
 	self.archive_date_block = -> (date) {date}
-	self.delay = 0
 
 	@links, @dates = [], []
 	@db = SQLite3::Database.new "./../policies.db"
@@ -50,10 +48,8 @@ module PrivacyExtractor
 		@db.execute("DELETE FROM `#{self.table_name}`;") if self.mode == :fetch
 		range = (self.own_archive) ? (1..@links.size) : (0..@links.size-1)
 		newest_plain = ""
-		distinct_versions = 1
-		sleep(self.delay) 
+		distinct_versions = 1 
 		for i in range
-			sleep(self.delay+i*self.delay)
 			link = (self.own_archive) ? @links[@links.size-i] : @links[i]
 			date = (self.own_archive) ? @dates[@dates.size-i] : @dates[i]
 			dom = Nokogiri::HTML open(link).read

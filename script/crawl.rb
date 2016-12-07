@@ -28,6 +28,11 @@ begin
 			PrivacyExtractor.url = "https://www.bk.com/privacy"
 			PrivacyExtractor.table_name = "BURGERKING"
 			PrivacyExtractor.xpath = '//div[@class="row content"]//h3|//p'
+		when :edeka
+			PrivacyExtractor.mode = MODE
+			PrivacyExtractor.url = "https://www.edeka.de/modulseiten/datenschutzbestimmungen/datenschutzbestimmungen.jsp"
+			PrivacyExtractor.table_name = "EDEKA"
+			PrivacyExtractor.xpath = '//div[@class="mainCl60"]//p|//h2'
 		when :google
 			PrivacyExtractor.mode = MODE
 			PrivacyExtractor.own_archive = true
@@ -57,25 +62,6 @@ begin
 			PrivacyExtractor.url = "https://www.paypal.com/yt/webapps/mpp/ua/privacy-full"
 			PrivacyExtractor.table_name = "PAYPAL"
 			PrivacyExtractor.xpath = '//section[@id="main"]//h1|//h2|//h3|//p[not(@class="nonjsAlert")]'
-		when :reddit
-			PrivacyExtractor.mode = MODE
-			PrivacyExtractor.own_archive = true
-			PrivacyExtractor.url = "https://www.reddit.com/help/privacypolicy"
-			PrivacyExtractor.table_name = "REDDIT"
-			PrivacyExtractor.xpath = '//div[@class="md wiki"]'
-			PrivacyExtractor.archive_xpath = '//ul[@class="revisions"]//a'
-			PrivacyExtractor.archive_date_block = -> (date) {
-				if date == "Privacy Shield Certification"
-					Date::MONTHNAMES[Time.now.month] + " " + Time.now.day.to_s + ", " + Time.now.year.to_s
-				else
-					names = Hash["jan" => "January", "feb" => "February", "mar" => "March", "apr" => "April", 
-						"may" => "May", "jun" => "June", "jul" => "July", "aug" => "August", "sep" => "September", 
-						"oct" => "October", "nov" => "November", "dec" => "December"]
-					month = names[date[0..2].downcase]
-					month + date[3..-1]
-				end
-			}
-			PrivacyExtractor.delay = 10
 		when :rocketbeans
 			PrivacyExtractor.mode = MODE
 			PrivacyExtractor.url = "https://www.rocketbeans.tv/datenschutz/"
