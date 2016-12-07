@@ -18,7 +18,11 @@ public class PPManager {
             try {
                 Process p = Runtime.getRuntime().exec("ruby crawl.rb " + s + " " + sys);
                 p.waitFor();
-                System.out.println(p.exitValue());
+                if(p.exitValue() == 0) {
+                    System.out.println(s.toUpperCase() + " finished successfully!");
+                } else {
+                    System.out.println(s.toUpperCase() + " finished with an error!");
+                }
             } catch (Exception err) {
                 err.printStackTrace();
             }

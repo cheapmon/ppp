@@ -6,7 +6,7 @@ module PrivacyDiffer
 		attr_accessor :threshold
 	end
 
-	self.threshold = 5
+	self.threshold = 2
 
 	def self.different? s1, s2
 		diff = Differ.diff_by_word(s1, s2).format_as(:ascii)
