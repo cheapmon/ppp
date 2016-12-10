@@ -12,7 +12,7 @@ public class DatabaseInitializer {
 	
 	public static final DatabaseInitializer dbcontroller = new DatabaseInitializer(); 
     public Connection connection; 
-    private static final String DB_PATH = System.getProperty("user.home") + "/" + "tmcrawl.db"; 
+    private static final String DB_PATH = "C:\\Users\\Alexander\\Desktop\\Main\\Entwicklung\\tmcrawl" + "/" + "tmcrawl.db"; 
 	
     static { 
         try { 
