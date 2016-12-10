@@ -10,6 +10,8 @@
     <script src="../../bower_components/angular-route/angular-route.js"></script>
     <script src="../../bower_components/jquery/dist/jquery.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../bower_components/jsdiff/diff.js"></script>
+    <script src="index_directive.js"></script>
 
 
     <!-- css stylesheets -->
@@ -39,15 +41,49 @@
     <p align="center"> Zeitstrahl</p>
 </div>
 <div>
-    <div class="col-md-5">
-        <p align="center"> Zeitpunkt 1</p>
+    <div class="col-md-3">
+        <p id="text1">      Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese Schlüsselbegriffe informieren. Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
+
+            Zurück nach oben</p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
+        <p id="text2">  Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
+            Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese Schlüsselbegriffe informieren.
+
+            Zurück nach oben
+        </p>
+    </div>
+    <div class="col-md-3">
         <p align="center"> Navigationstools</p>
     </div>
-    <div class="col-md-5">
-        <p align="center"> Zeitpunkt 2</p>
+    <div class="col-md-3">
+        <p id="text3"></p>
     </div>
 </div>
+
+<script>
+    var first = document.getElementById('text1').innerHTML;
+    var second = document.getElementById('text2').innerHTML;
+
+    var color = '';
+    var span = null;
+    var diff = JsDiff.diffWords(first, second),
+            third = document.getElementById('text3'),
+            fragment = document.createDocumentFragment();
+    console.log(first + " " +  second);
+    diff.forEach(function(part){
+        // green for additions, red for deletions
+        // grey for common parts
+        var color = part.added ? 'green' :
+                part.removed ? 'red' : 'grey';
+        span = document.createElement('span');
+        span.style.color = color;
+        span.appendChild(document
+                .createTextNode(part.value));
+        fragment.appendChild(span);
+    });
+
+    third.appendChild(fragment);
+</script>
 </body>
 </html>
