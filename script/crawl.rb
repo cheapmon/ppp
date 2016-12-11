@@ -1,12 +1,17 @@
 require 'date'
-
 require './PrivacyExtractor.rb'
 
+# Main script, containing all information neccessary for the extractor.
+# @author Simon Kaleschke
 begin
 
+	# The website to crawl
 	SITE = ARGV[0].to_sym
+	# Mode of extraction, :update or :fetch
 	MODE = ARGV[1].to_sym
 
+	# Options for each site
+	# @see PrivacyExtractor
 	case SITE
 		when :alternate
 			PrivacyExtractor.mode = MODE
@@ -164,6 +169,7 @@ begin
 			
 	end
 	
+	# Call the extractor
 	PrivacyExtractor.extract
 
 end
