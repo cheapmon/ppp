@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="demo">
 <head>
     <meta charset="UTF-8">
     <title>Privacy Policy Crawler</title>
@@ -37,6 +37,9 @@
     </div>
 
 </nav>
+ <div ng-controller="Hello">
+     <p ng-repeat="gr in greeting"> {{gr.dateValue}}</p>
+ </div>
 <div>
     <p align="center"> Zeitstrahl</p>
 </div>

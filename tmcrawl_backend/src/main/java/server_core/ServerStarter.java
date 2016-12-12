@@ -22,7 +22,7 @@ public class ServerStarter {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.underdog.jersey.grizzly package
-        final ResourceConfig rc = new ResourceConfig().packages("resources");
+        final ResourceConfig rc = new ResourceConfig().packages("resources").register(RequestFilter.class);
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
