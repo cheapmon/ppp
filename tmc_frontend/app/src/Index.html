@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="demo">
+<html lang="en" ng-app="tmc">
 <head>
     <meta charset="UTF-8">
     <title>Privacy Policy Crawler</title>
@@ -16,48 +16,63 @@
 
     <!-- css stylesheets -->
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 
 </head>
 <body>
 <!-- navigation bar at the top of the page -->
-<!-- TODO reposive images -->
+<!-- TODO reposive images -->n
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Privacy Policy Crawler</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="#"><img src="../lib/img/google.png" alt="Google" height="50px" width="auto"></a></li>
-            <li><a href="#"><img src="../lib/img/twitter.png" alt="Twitter" height="50px" width="auto"></a></li>
-            <li><a href="#"><img src="../lib/img/whatsapp.jpg" alt="Whatsapp" height="50px" width="auto"></a></li>
-            <li><a href="#"><img src="../lib/img/wikimedia.jpg" alt="Wikimedia" height="50px" width="auto"></a></li>
-            <li><a href="#"><img src="../lib/img/reddit.png" alt="Reddit" height="50px" width="auto"></a></li>
+            <li><a href="#">Google</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Whatsapp</a></li>
+            <li><a href="#">Wikimedia</a></li>
         </ul>
     </div>
-
 </nav>
- <div ng-controller="Hello">
-     <p ng-repeat="gr in greeting"> {{gr.dateValue}}</p>
- </div>
-<div>
-    <p align="center"> Zeitstrahl</p>
-</div>
-<div>
+<div ng-controller="pageCtrl">
     <div class="col-md-3">
-        <p id="text1">      Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese Schlüsselbegriffe informieren. Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
+        <p id="text1"> Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie
+            Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese
+            Schlüsselbegriffe informieren. Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie,
+            unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um
+            unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
 
             Zurück nach oben</p>
     </div>
     <div class="col-md-3">
-        <p id="text2">  Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
-            Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese Schlüsselbegriffe informieren.
+        <p id="text2"> Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein
+            neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen
+            – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
+            Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies,
+            IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese
+            Schlüsselbegriffe informieren.
 
             Zurück nach oben
         </p>
     </div>
     <div class="col-md-3">
-        <p align="center"> Navigationstools</p>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Datum linker Text
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" ng-repeat="d in dates">{{d.dateValue}}</li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Datum rechter Text
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" ng-repeat="d in dates">{{d.dateValue}}</li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-3">
         <p id="text3"></p>
@@ -73,8 +88,8 @@
     var diff = JsDiff.diffWords(first, second),
             third = document.getElementById('text3'),
             fragment = document.createDocumentFragment();
-    console.log(first + " " +  second);
-    diff.forEach(function(part){
+    console.log(first + " " + second);
+    diff.forEach(function (part) {
         // green for additions, red for deletions
         // grey for common parts
         var color = part.added ? 'green' :
