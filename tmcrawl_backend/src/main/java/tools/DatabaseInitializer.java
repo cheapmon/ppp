@@ -12,7 +12,7 @@ public class DatabaseInitializer {
 	
 	public static final DatabaseInitializer dbcontroller = new DatabaseInitializer(); 
     public Connection connection; 
-    private static final String DB_PATH = "C:\\Users\\AlexAG\\Desktop\\Main\\Entwicklung\\tmcrawl" + "/" + "policies.db"; 
+    private static final String DB_PATH = "C:\\Users\\ap62puny\\Desktop\\Uni\\tmcrawl" + "/" + "policies.db"; 
 	
     static { 
         try { 

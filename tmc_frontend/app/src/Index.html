@@ -21,7 +21,7 @@
 </head>
 <body>
 <!-- navigation bar at the top of the page -->
-<!-- TODO reposive images -->n
+<!-- TODO reposive images -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -56,7 +56,7 @@
             Zurück nach oben
         </p>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-1">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 Datum linker Text
@@ -65,6 +65,8 @@
                 <li class="dropdown-item" ng-repeat="d in dates">{{d.dateValue}}</li>
             </ul>
         </div>
+    </div>
+    <div class="col-md-1">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 Datum rechter Text
@@ -74,7 +76,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <p id="text3"></p>
     </div>
 </div>
