@@ -16,12 +16,11 @@
 
     <!-- css stylesheets -->
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 <!-- navigation bar at the top of the page -->
-<!-- TODO reposive images -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -37,24 +36,10 @@
 </nav>
 <div ng-controller="pageCtrl">
     <div class="col-md-3">
-        <p id="text1"> Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie
-            Cookies, IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese
-            Schlüsselbegriffe informieren. Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie,
-            unabhängig davon, ob Sie ein neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um
-            unsere Praktiken kennenzulernen – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
-
-            Zurück nach oben</p>
+        <p id="text1">{{text}}</p>
     </div>
     <div class="col-md-3">
-        <p id="text2"> Der Schutz Ihrer Daten ist Google wichtig und daher bitten wir Sie, unabhängig davon, ob Sie ein
-            neuer oder langjähriger Nutzer von Google sind, sich die Zeit zu nehmen, um unsere Praktiken kennenzulernen
-            – und wenn Sie dazu Fragen haben sollten, können Sie uns kontaktieren.
-            Wir haben uns um eine möglichst einfache Darstellung bemüht, wenn Sie jedoch mit Begriffen wie Cookies,
-            IP-Adressen, Pixel-Tags und Browsern nicht vertraut sind, sollten Sie sich zunächst über diese
-            Schlüsselbegriffe informieren.
-
-            Zurück nach oben
-        </p>
+            <p id="text2">{{text2}}</p>
     </div>
     <div class="col-md-1">
         <div class="dropdown">
@@ -62,7 +47,9 @@
                 Datum linker Text
             </button>
             <ul class="dropdown-menu">
-                <li class="dropdown-item" ng-repeat="d in dates">{{d.dateValue}}</li>
+                <li class="dropdown-item" ng-repeat="d in dates">
+                    <a href="#" class="test3 test2">{{d.dateValue}}</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -72,38 +59,21 @@
                 Datum rechter Text
             </button>
             <ul class="dropdown-menu">
-                <li class="dropdown-item" ng-repeat="d in dates">{{d.dateValue}}</li>
+                <li class="dropdown-item" ng-repeat="d in dates">
+                    <a href="#" class="test4 test2">{{d.dateValue}}</a>
+                </li>
             </ul>
         </div>
     </div>
-    <div class="col-md-4">
-        <p id="text3"></p>
+    <div class="col-md-1">
+    <button class="btn btn-primary test6" type="button">
+        Diff it, Baby!
+    </button>
+    </div>
+
+    <div class="col-md-3">
+        <p id="text3" class="test5"></p>
     </div>
 </div>
-
-<script>
-    var first = document.getElementById('text1').innerHTML;
-    var second = document.getElementById('text2').innerHTML;
-
-    var color = '';
-    var span = null;
-    var diff = JsDiff.diffWords(first, second),
-            third = document.getElementById('text3'),
-            fragment = document.createDocumentFragment();
-    console.log(first + " " + second);
-    diff.forEach(function (part) {
-        // green for additions, red for deletions
-        // grey for common parts
-        var color = part.added ? 'green' :
-                part.removed ? 'red' : 'grey';
-        span = document.createElement('span');
-        span.style.color = color;
-        span.appendChild(document
-                .createTextNode(part.value));
-        fragment.appendChild(span);
-    });
-
-    third.appendChild(fragment);
-</script>
 </body>
 </html>
