@@ -1,7 +1,7 @@
 angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
 
-    $scope.text = "PPP"
-    $scope.text2 = "PPP"
+    $scope.text = ""
+    $scope.text2 = ""
     $scope.third = "";
     //Default link is google
     $scope.siteName = "http://localhost:8080/rest/datum?company=google";
