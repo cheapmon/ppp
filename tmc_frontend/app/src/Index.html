@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tmc">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy Crawler</title>
+
+    <!-- bower dependencies -->
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="../../bower_components/angular-route/angular-route.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../bower_components/jsdiff/diff.js"></script>
+    <script src="index_directive.js"></script>
+
+
+    <!-- css stylesheets -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<!-- navigation bar at the top of the page -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Privacy Policy Crawler</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Google</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Whatsapp</a></li>
+            <li><a href="#">Wikimedia</a></li>
+        </ul>
+    </div>
+</nav>
+<div ng-controller="pageCtrl">
+    <div class="col-md-3">
+        <p id="text1">{{text}}</p>
+    </div>
+    <div class="col-md-3">
+            <p id="text2">{{text2}}</p>
+    </div>
+    <div class="col-md-1">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Datum linker Text
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" ng-repeat="d in dates">
+                    <a href="#" class="test3 test2">{{d.dateValue}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Datum rechter Text
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" ng-repeat="d in dates">
+                    <a href="#" class="test4 test2">{{d.dateValue}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-1">
+    <button class="btn btn-primary test6" type="button">
+        Diff it, Baby!
+    </button>
+    </div>
+
+    <div class="col-md-3">
+        <p id="text3" class="test5"></p>
+    </div>
+</div>
+</body>
+</html>
