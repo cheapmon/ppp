@@ -1,5 +1,37 @@
-angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
+$(document).ready(function () {
+    var trigger = $('.hamburger'),
+        overlay = $('.overlay'),
+        option = $('.nav a'),
+        isClosed = false;
 
+
+    trigger.click(function () {
+        console.log(isClosed);
+        hamburger_cross();
+        console.log(isClosed);
+    });
+
+    function hamburger_cross() {
+
+        if (isClosed == true) {
+            overlay.hide();
+            trigger.removeClass('is-open');
+            trigger.addClass('is-closed');
+            isClosed = false;
+        } else {
+            overlay.show();
+            trigger.removeClass('is-closed');
+            trigger.addClass('is-open');
+            isClosed = true;
+        }
+    }
+
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+    });
+});
+
+angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     $scope.text = ""
     $scope.text2 = ""
     $scope.third = "";
@@ -7,29 +39,23 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     $scope.siteName = "http://localhost:8080/rest/datum?company=google";
     //Set class "active" to clicked item on navbar
     $(".nav a").on("click", function () {
-        console.log("Hier!");
         $(".nav").find(".active").removeClass("active");
         $(this).parent().addClass("active");
         $scope.activeSite = $(".active").children().html().toLowerCase();
-        console.log($scope.activeSite);
         $scope.siteName = "http://localhost:8080/rest/datum?company=" + $(".active").children().html().toLowerCase();
-        console.log($scope.siteName);
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
-            console.log($scope.dates);
         });
     });
     console.log(typeof($scope.siteName));
 
     $(document).on("click", ".test3", function() {
         $(".test5").html("");
-        $(".test2").parent().parent().find(".test2").removeClass("test2");
+        $(".test2").parent().find(".test2").removeClass("test2");
         $(this).addClass("test2");
         $scope.dateOne = $(".test2").html();
-        console.log($scope.dateOne);
         $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
             + $scope.dateOne;
-        console.log($scope.siteNameDate);
         $http.get($scope.siteNameDate).then(function(response){
             $scope.text = response.data[0].text;
         })
@@ -37,15 +63,13 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
 
     $(document).on("click", ".test4", function() {
         $(".test5").html("");
-        $(".test2").parent().parent().find(".test2").removeClass("test2");
+        $(".test2").parent().find(".test2").removeClass("test2");
         $(this).addClass("test2");
         $scope.dateOne = $(".test2").html();
-        console.log($scope.dateOne);
         $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
             + $scope.dateOne;
         $http.get($scope.siteNameDate).then(function(response){
             $scope.text2 = response.data[0].text;
-            console.log($scope.siteNameDate);
         })
     });
 
