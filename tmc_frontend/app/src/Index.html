@@ -88,65 +88,8 @@
                     Privacy Policy Picker
                 </a>
             </li>
-            <li>
-                <a href="#">Alternate</a>
-            </li>
-            <li>
-                <a href="#">Amorelie</a>
-            </li>
-            <li>
-                <a href="#">Apple</a>
-            </li>
-            <li>
-                <a href="#">Burgerking</a>
-            </li>
-            <li>
-                <a href="#">Edeka</a>
-            </li>
-            <li>
-                <a href="#">Google</a>
-            </li>
-            <li>
-                <a href="#">Microsoft</a>
-            </li>
-            <li>
-                <a href="#">Payback</a>
-            </li>
-            <li>
-                <a href="#">Paypal</a>
-            </li>
-            <li>
-                <a href="#">Rocketbeans</a>
-            </li>
-            <li>
-                <a href="#">Steam</a>
-            </li>
-            <li>
-                <a href="#">Subway</a>
-            </li>
-            <li>
-                <a href="#">Sueddeutsche</a>
-            </li>
-            <li>
-                <a href="#">Trivago</a>
-            </li>
-            <li>
-                <a href="#">Twitter</a>
-            </li>
-            <li>
-                <a href="#">Uni Leipzig</a>
-            </li>
-            <li>
-                <a href="#">Vine</a>
-            </li>
-            <li>
-                <a href="#">Whatsapp</a>
-            </li>
-            <li>
-                <a href="#">Wikimedia</a>
-            </li>
-            <li>
-                <a href="#">Zalando</a>
+            <li ng-repeat="s in siteNames">
+                <a href="#" ng-click="fillDates(s.name, false)">{{s.name}}</a>
             </li>
         </ul>
     </nav>
@@ -154,7 +97,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas" ng-click="hamburger_cross()">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
@@ -165,7 +108,8 @@
                     <p style="text-align: center">What has changed between </p>
                     <div class="form-group s1">
                         <select class="form-control">
-                            <option ng-repeat="d in dates" class=" hamburger test3 test2">{{d.dateValue}}</option>
+                            <option ng-repeat="d in dates" ng-click="fillText(d.dateValue)">
+                                {{d.dateValue}}</option>
                         </select>
                     </div>
                 </div>
@@ -173,12 +117,12 @@
                     <p style="text-align: center"> and </p>
                     <div class="form-group s1">
                         <select class="form-control">
-                            <option ng-repeat="d in dates" class="test4 test2">{{d.dateValue}}</option>
+                            <option ng-repeat="d in dates">{{d.dateValue}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-primary test6" type="button">
+                    <button class="btn btn-primary" type="button" ng-click="diff()">
                         Diffen
                     </button>
                 </div>
@@ -194,7 +138,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-default" id="p2">
                         <div class="panel-body">
-                            <p id="text3" class="test5"></p>
+                            <p id="text3"></p>
                         </div>
                     </div>
                 </div>
