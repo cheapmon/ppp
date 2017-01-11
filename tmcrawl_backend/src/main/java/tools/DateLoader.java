@@ -1,28 +1,39 @@
 package tools;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import representation.Date;
 
+/**
+ * SQL to receive all saved Dates for a company
+ *
+ */
 public class DateLoader {
 	
+	/**
+	 * get all dates of a company
+	 * @param company: Table of the company in the database
+	 * @return list of dates
+	 * @throws SQLException
+	 */
 	public List<Date> getDates(String company) throws SQLException{
+		//get database instance
 		DatabaseInitializer db = DatabaseInitializer.getInstance();
+		//set and initialize db connection
 		db.connection = null;
 		db.initDBConnection();
-		
+		//initialize result set, statement and list
 		Statement stmt = null;
     	ResultSet rs = null;
     	List<Date> allDates = new ArrayList<Date>();
 		try {
 			stmt = db.connection.createStatement();
-			
+			//switch: SQL for company
+			//20 standard companies
+			//default for new companies
 			switch (company){
 				case "google":
 					rs = stmt.executeQuery("SELECT DATE FROM GOOGLE");
@@ -85,6 +96,8 @@ public class DateLoader {
 					rs = stmt.executeQuery("SELECT DATE FROM SUBWAY");
 					break;
 				default:
+					String querie = "SELECT DATE FROM " + company.toUpperCase();
+					rs = stmt.executeQuery(querie);
 			}
 			if (rs == null){
 				Date da = new Date(0,"Fehler: Unternehmen nicht vorhanden");
@@ -92,25 +105,20 @@ public class DateLoader {
 			}
 			else {
 				int i = 1;
+				//TODO get ID with SQL
 				while (rs.next()){
 					Date da = new Date(i,rs.getString("DATE"));
 					allDates.add(da);
 					System.out.println(da);
 					i++;
-				
 				}
 				i = 1;
 			}
-			
 		} catch (SQLException e) {
 			System.out.println("Fehler: Datenbankabfrage");
 			e.printStackTrace();
 		} 
 		db.connection.close();
 		return allDates;
-		
 	}
-	
-
-
 }

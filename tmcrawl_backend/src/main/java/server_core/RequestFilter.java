@@ -7,19 +7,16 @@ import javax.ws.rs.core.Context;
 
 import org.glassfish.jersey.server.ExtendedUriInfo;
 
-
 /**
  * Filters all incoming requests. See
  * https://jersey.java.net/documentation/latest/filters-and-interceptors.html
  * for more information.
- * 
- * @author SB
  *
  */
 public class RequestFilter implements ContainerResponseFilter {
 
 	/**
-	 * 'true' iff in debug mode, i.e., no security features are checkd.
+	 * 'true' iff in debug mode, i.e., no security features are checked.
 	 */
 	public static boolean debug = false;
 

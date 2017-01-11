@@ -4,16 +4,30 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import representation.Date;
-
-
-
+/**
+ * initialize the SQLite database
+ *
+ */
 public class DatabaseInitializer {
 	
+	/**
+	 * new DatabaseInitializer
+	 */
 	public static final DatabaseInitializer dbcontroller = new DatabaseInitializer(); 
-    public Connection connection; 
+    
+	/**
+     * new Connection
+     */
+	public Connection connection; 
+    
+	/**
+     * path to database
+     */
     private static final String DB_PATH = "C:\\Users\\Alexander\\Desktop\\Main\\Entwicklung\\tmcrawl" + "/" + "policies.db";
-	
+    
+    /**
+     * load new JDBC driver 
+     */
     static { 
         try { 
             Class.forName("org.sqlite.JDBC"); 
@@ -23,15 +37,25 @@ public class DatabaseInitializer {
         } 
     } 
     
+    /**
+     * constructor for DatabaseInitializer
+     */
     public DatabaseInitializer(){ 
     } 
-     
+    
+    /**
+     * method to get an instance of DatabaseInitializer
+     * @return dbcontroller: instance for DatabaseInitializer
+     */
     public static DatabaseInitializer getInstance(){ 
         return dbcontroller; 
     }
     
-    public void initDBConnection() { 
-    	
+    /**
+     * initialize db connection
+     */
+    public void initDBConnection() {
+    	//try to connect with given driver and path
         try { 
             if (connection != null) 
                 return; 
@@ -42,8 +66,11 @@ public class DatabaseInitializer {
         } catch (SQLException e) { 
             throw new RuntimeException(e); 
         } 
-
-        Runtime.getRuntime().addShutdownHook(new Thread() { 
+        //recognize abort signal and release resources
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+        	/**
+        	 * recognize abort signal and release resources
+        	 */
             public void run() { 
                 try { 
                     if (!connection.isClosed() && connection != null) { 
@@ -56,10 +83,12 @@ public class DatabaseInitializer {
                 } 
             } 
         }); 
-    } 
+    }
     
-    public void handleDB() { 
-    	
+    /**
+     * example method to create a resultset and statement
+     */
+    public void handleDB() {    	
     	ResultSet rs = null;
     	Statement stmt = null;
     	List<String> res = new ArrayList<String>();
@@ -70,11 +99,7 @@ public class DatabaseInitializer {
         	//System.out.println(rs);
             while (rs.next()){
             	res.add(rs.getString("DATE"));
-            }
-           
-           
-        	       	
-        	
+            }             	
         } catch (SQLException e) { 
             System.err.println("Couldn't handle DB-Query"); 
             e.printStackTrace(); 
@@ -83,18 +108,13 @@ public class DatabaseInitializer {
 			e.printStackTrace();
 		}
         System.out.print(res);
-        
-    }
-    
+    }    
 
-    
-    
+    /**
+     * main method
+     * @param args
+     */
 	public static void main (String[] args ){
-		DatabaseInitializer dbc = DatabaseInitializer.getInstance(); 
-       
-        
-        
+		DatabaseInitializer dbc = DatabaseInitializer.getInstance();  
 	}
-	
-	
 }

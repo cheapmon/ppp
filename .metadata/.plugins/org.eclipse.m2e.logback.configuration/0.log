@@ -1,0 +1,162 @@
+2016-12-23 06:07:02,311 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2016-12-23 06:08:41,144 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: tmcrawl_backend:tmcrawl_backend:0.0.1-SNAPSHOT @ C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\pom.xml.
+2016-12-23 06:08:41,148 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: tmcrawl_backend:tmcrawl_backend:0.0.1-SNAPSHOT @ C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\pom.xml.
+2016-12-23 06:09:08,371 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:08,426 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:09:08,439 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:08,454 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:09:18,228 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: tmcrawl_backend:tmcrawl_backend:0.0.1-SNAPSHOT @ C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\pom.xml.
+2016-12-23 06:09:19,092 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:19,113 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:09:19,129 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:19,145 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:09:20,778 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:20,992 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:09:21,000 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:09:21,017 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:24:21,002 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:24:21,653 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:24:21,665 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:24:21,702 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:24:30,445 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:24:30,596 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:24:30,680 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:24:30,701 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:36:21,183 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:36:21,223 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:36:21,227 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:36:21,237 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-23 06:37:31,642 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:37:31,678 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-23 06:37:31,722 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-23 06:37:31,739 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:23:50,356 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2016-12-24 12:27:01,279 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:27:01,318 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:27:01,329 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:27:01,344 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:27:31,632 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:27:31,646 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:27:31,649 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:27:31,660 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:30:04,307 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:30:04,323 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:30:04,327 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:30:04,338 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:30:26,343 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:30:26,360 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:30:26,367 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:30:26,389 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:32:00,262 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:32:00,288 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:32:00,291 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:32:00,326 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:33:22,414 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:33:22,442 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:33:22,457 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:33:22,481 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:33:23,557 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:33:23,615 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:33:23,640 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:33:23,729 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:34:20,838 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:34:20,914 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:34:20,931 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:34:20,960 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:38:07,960 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:08,006 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:38:08,010 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:08,053 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:38:09,238 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:09,272 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:38:09,308 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:09,333 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:38:10,582 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:10,594 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:38:10,598 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:38:10,617 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:39:17,289 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:39:17,313 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:39:17,346 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:39:17,425 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:42:23,140 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:42:23,242 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:42:23,249 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:42:23,391 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:48:03,781 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:48:03,807 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:48:03,820 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:48:03,856 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:48:04,953 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:48:04,964 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:48:04,973 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:48:04,998 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:49:53,809 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:49:53,837 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:49:53,854 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:49:53,875 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:51:13,016 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:51:13,190 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:51:13,193 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:51:13,212 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2016-12-24 12:51:55,284 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:51:55,303 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2016-12-24 12:51:55,314 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-24 12:51:55,338 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 20:52:06,957 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2017-01-10 21:15:48,558 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:15:52,744 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:15:52,826 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:15:52,961 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:19:45,397 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:19:45,409 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:19:45,411 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:19:45,422 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:21:46,837 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:21:46,885 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:21:46,913 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:21:46,977 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:23:49,046 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:23:49,095 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:23:49,100 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:23:49,240 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:24:32,770 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:24:32,875 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:24:32,878 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:24:32,941 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:24:57,375 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:24:57,509 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:24:57,521 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:24:57,537 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:28:38,261 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:28:38,326 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:28:38,337 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:28:38,356 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:29:41,402 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:29:41,473 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:29:41,479 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:29:41,505 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:30:38,840 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:30:38,909 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:30:38,943 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:30:38,963 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:37:46,883 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:37:46,924 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:37:46,928 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:37:46,958 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:38:21,853 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:38:21,874 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:38:21,888 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:38:21,906 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-10 21:38:50,101 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:38:50,111 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-10 21:38:50,116 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-10 21:38:50,136 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-11 15:11:10,758 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-11 15:11:10,910 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-11 15:11:11,111 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-11 15:11:11,227 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
+2017-01-11 15:12:23,802 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-11 15:12:23,851 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\main\resources
+2017-01-11 15:12:23,935 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-01-11 15:12:23,955 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Jörn-Henning\Documents\GitHub\tmcrawl\tmcrawl_backend\src\test\resources
