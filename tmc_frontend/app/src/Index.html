@@ -49,27 +49,34 @@
             <span class="hamb-bottom"></span>
         </button>
         <div class="container-fluid" id="cf1">
-            <div class="row">
+            <div class=row">
+                <div style="margin-bottom: 20px" id="visualization"></div>
+            </div>
+            <div class="row" style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 20px">
                 <div class="col-md-3">
-                    <p style="text-align: center">What has changed between </p>
+                    <p style=" text-align: center; padding: 5px 0px">What has changed between </p>
+                </div>
+                <div class="col-md-3">
                     <div class="form-group s1">
-                        <select class="form-control" ng-model="selectedDateOne" ng-change="fillText(true)">
+                        <select class="form-control" ng-model="selectedDateOne" ng-change="fillText(true)" style="margin: 0px 0px">
                             <option ng-repeat="d in dates" value="{{d.dateValue}}">
                                 {{d.dateValue}}
                             </option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-1">
                     <p style="text-align: center"> and </p>
+                </div>
+                <div class="col-md-3">
                     <div class="form-group s1">
                         <select class="form-control" ng-model="selectedDateTwo" ng-change="fillText(false)">
                             <option ng-repeat="d in dates" value="{{d.dateValue}}">{{d.dateValue}}</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <button class="btn btn-primary" type="button" ng-click="diff()">
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="button" ng-click="diff()" style="">
                         Start
                     </button>
                 </div>

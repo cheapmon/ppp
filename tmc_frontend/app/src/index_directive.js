@@ -14,48 +14,48 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     //provides List of crawled sites
     $scope.siteNames = [{
         name: "Alternate"
-    },{
+    }, {
         name: "Amorelie"
-    },{
+    }, {
         name: "Apple"
-    },{
+    }, {
         name: "Burgerking"
-    },{
+    }, {
         name: "Edeka"
-    },{
+    }, {
         name: "Google"
-    },{
+    }, {
         name: "Microsoft"
-    },{
+    }, {
         name: "Payback"
-    },{
+    }, {
         name: "Paypal"
-    },{
+    }, {
         name: "Rocketbeans"
-    },{
+    }, {
         name: "Steam"
-    },{
+    }, {
         name: "Subway"
-    },{
+    }, {
         name: "Sueddeutsche"
-    },{
+    }, {
         name: "Trivago"
-    },{
+    }, {
         name: "Twitter"
-    },{
+    }, {
         name: "Uni Leipzig"
-    },{
+    }, {
         name: "Vine"
-    },{
+    }, {
         name: "Whatsapp"
-    },{
+    }, {
         name: "Wikimedia"
-    },{
+    }, {
         name: "Zalando"
     }];
 
     //opens or closes the sidebar
-    $scope.hamburger_cross = function() {
+    $scope.hamburger_cross = function () {
         if ($scope.isClosed == true) {
             $scope.overlay.hide();
             $scope.trigger.removeClass('is-open');
@@ -67,57 +67,73 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
             $scope.trigger.addClass('is-open');
             $scope.isClosed = true;
         }
-    }
+    };
 
     //toggle
     $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
     });
 
+    $scope.toggleBar = function () {
+        $('#wrapper').toggleClass('toggled');
+    };
 
     //gets the clicked company from the sidebar and receives dates of stored policies
     $scope.fillDates = function (company, init) {
-        $scope.company = company;
+        $scope.company = company.toLowerCase();
 
-        if(!init){
+        if (!init) {
             $scope.hamburger_cross();
+            $('#wrapper').toggleClass('toggled');
         }
-        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $scope.company.toLowerCase();
+        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $scope.company;
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
         });
-    }
+
+    };
 
     //gets the clicked date and receives the policy
     $scope.fillText = function (isTextOne) {
-        if(isTextOne){
-            console.log("test");
+        if (isTextOne) {
             date = $scope.selectedDateOne;
-        }else{
-            console.log("test2");
+        } else {
             date = $scope.selectedDateTwo;
         }
         $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.company.toLowerCase() + "?date=" + date;
-        $http.get($scope.siteNameDate).then(function(response){
+        $http.get($scope.siteNameDate).then(function (response) {
             $scope.text = response.data[0].text;
-            console.log(response);
-        })
-        if(isTextOne){
-            console.log("test3");
+        });
+        if (isTextOne) {
             $scope.text1 = $scope.text;
-        }else{
-            console.log("test4");
+        } else {
             $scope.text2 = $scope.text;
         }
-    }
+    };
 
-    $scope.fillDates("google", true);
-    //$scope.fillText(true);
-    //$scope.fillText(false);
+
+
+    //creates the vis js timeline
+    var container = document.getElementById('visualization');
+    var items = new vis.DataSet([
+        {id: 1, content: 'item 1', start: '2013-04-20'},
+        {id: 2, content: 'item 2', start: '2013-04-14'},
+        {id: 3, content: 'item 3', start: '2013-04-18'},
+        {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+        {id: 5, content: 'item 5', start: '2013-04-25'},
+        {id: 6, content: 'item 6', start: '2013-04-27'}
+    ]);
+
+    // Configuration for the Timeline
+    var options = {};
+
+    // Create a Timeline
+    var timeline = new vis.Timeline(container, items, options);
+
 
     //function for the imported diff tool
-    $scope.diff =function(){
-        $("text3").empty();
+    $scope.diff = function () {
+        $("#text3").empty();
         var first = $scope.text1;
         var second = $scope.text2;
 
@@ -139,7 +155,6 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
         });
 
         third.appendChild(fragment);
-        console.log(third);
-    }
-
+    };
+    $scope.fillDates("google", true);
 });
