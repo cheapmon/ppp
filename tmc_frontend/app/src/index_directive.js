@@ -1,36 +1,3 @@
-/**$(document).ready(function () {
-    var trigger = $('.hamburger'),
-        overlay = $('.overlay'),
-        option = $('.nav a'),
-        isClosed = false;
-
-
-    trigger.click(function () {
-        console.log(isClosed);
-        hamburger_cross();
-        console.log(isClosed);
-    });
-
-    function hamburger_cross() {
-
-        if (isClosed == true) {
-            overlay.hide();
-            trigger.removeClass('is-open');
-            trigger.addClass('is-closed');
-            isClosed = false;
-        } else {
-            overlay.show();
-            trigger.removeClass('is-closed');
-            trigger.addClass('is-open');
-            isClosed = true;
-        }
-    }
-
-    $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').toggleClass('toggled');
-    });
-}); */
-
 angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
 
     //sidebar variables
@@ -40,8 +7,8 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     $scope.isClosed = false;
 
     //text fields
-    $scope.text = ""
-    $scope.text2 = ""
+    $scope.text = "";
+    $scope.text2 = "";
     $scope.third = "";
 
     //provides List of crawled sites
@@ -87,17 +54,10 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
         name: "Zalando"
     }];
 
-    /**$scope.trigger.click(function () {
-     console.log(isClosed);
-     $scope.hamburger_cross();
-     console.log(isClosed);
-     });*/
-
     //opens or closes the sidebar
     $scope.hamburger_cross = function() {
         if ($scope.isClosed == true) {
             $scope.overlay.hide();
-            console.log("test");
             $scope.trigger.removeClass('is-open');
             $scope.trigger.addClass('is-closed');
             $scope.isClosed = false;
@@ -122,78 +82,50 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
         if(!init){
             $scope.hamburger_cross();
         }
-        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $scope.company;
+        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $scope.company.toLowerCase();
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
         });
     }
 
     //gets the clicked date and receives the policy
-    $scope.fillText = function (date) {
-
-        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.company + "?date=" + date;
+    $scope.fillText = function (isTextOne) {
+        if(isTextOne){
+            console.log("test");
+            date = $scope.selectedDateOne;
+        }else{
+            console.log("test2");
+            date = $scope.selectedDateTwo;
+        }
+        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.company.toLowerCase() + "?date=" + date;
         $http.get($scope.siteNameDate).then(function(response){
             $scope.text = response.data[0].text;
+            console.log(response);
         })
+        if(isTextOne){
+            console.log("test3");
+            $scope.text1 = $scope.text;
+        }else{
+            console.log("test4");
+            $scope.text2 = $scope.text;
+        }
     }
 
     $scope.fillDates("google", true);
-
-    /**
-    //reads company and fetches dates of privacy policies
-    $(".nav a").on("click", function () {
-        $(".nav").find(".active").removeClass("active");
-        $(this).parent().addClass("active");
-        $scope.activeSite = $(".active").children().html().toLowerCase();
-        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $(".active").children().html().toLowerCase();
-        $http.get($scope.siteName).then(function (response) {
-            $scope.dates = response.data;
-        });
-    });
-    console.log(typeof($scope.siteName));
-
-    //reads date and fetches the policy
-    $(document).on("click", ".test3", function() {
-        $(".test5").html("");
-        $(".test2").parent().find(".test2").removeClass("test2");
-        $(this).addClass("test2");
-        $scope.dateOne = $(".test2").html();
-        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
-            + $scope.dateOne;
-        $http.get($scope.siteNameDate).then(function(response){
-            $scope.text = response.data[0].text;
-        })
-    });
-
-    //reads date and fetches the policy
-    $(document).on("click", ".test4", function() {
-        $(".test5").html("");
-        $(".test2").parent().find(".test2").removeClass("test2");
-        $(this).addClass("test2");
-        $scope.dateOne = $(".test2").html();
-        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
-            + $scope.dateOne;
-        $http.get($scope.siteNameDate).then(function(response){
-            $scope.text2 = response.data[0].text;
-        })
-    });
-
-    $(".test6").on("click", function () {
-        diffen();
-    });*/
+    //$scope.fillText(true);
+    //$scope.fillText(false);
 
     //function for the imported diff tool
     $scope.diff =function(){
-        $scope.third = "";
-        $scope.fragment = "";
-        var first = $scope.text;
+        $("text3").empty();
+        var first = $scope.text1;
         var second = $scope.text2;
 
         var color = '';
         var span = null;
-        var diff = JsDiff.diffSentences(first, second);
-        $scope.third = document.getElementById('text3');
-        $scope.fragment = document.createDocumentFragment();
+        var diff = JsDiff.diffWords(first, second);
+        var third = document.getElementById('text3');
+        var fragment = document.createDocumentFragment();
         diff.forEach(function (part) {
             // green for additions, red for deletions
             // grey for common parts
@@ -203,10 +135,11 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
             span.style.color = color;
             span.appendChild(document
                 .createTextNode(part.value));
-            $scope.fragment.appendChild(span);
+            fragment.appendChild(span);
         });
 
-        $scope.third.appendChild($scope.fragment);
+        third.appendChild(fragment);
+        console.log(third);
     }
 
 });
