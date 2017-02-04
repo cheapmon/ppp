@@ -39,5 +39,9 @@ public class PPManager {
             }
         }
     }
+
+	public static void main(String[] args) {
+		get(false);
+	}
     
 }

@@ -1,0 +1,15 @@
+/var/www/html/tmc_backend/src/main/java/representation/package-info.java
+/var/www/html/tmc_backend/src/main/java/tools/TextLoader.java
+/var/www/html/tmc_backend/src/main/java/tools/DateLoader.java
+/var/www/html/tmc_backend/src/main/java/tools/DatabaseInitializer.java
+/var/www/html/tmc_backend/src/main/java/server_core/ServerStarter.java
+/var/www/html/tmc_backend/src/main/java/representation/Date.java
+/var/www/html/tmc_backend/src/main/java/resources/DateService.java
+/var/www/html/tmc_backend/src/main/java/representation/Texts.java
+/var/www/html/tmc_backend/src/main/java/server_core/package-info.java
+/var/www/html/tmc_backend/src/main/java/server_core/Start.java
+/var/www/html/tmc_backend/src/main/java/tools/package-info.java
+/var/www/html/tmc_backend/src/main/java/server_core/CrawlerStarter.java
+/var/www/html/tmc_backend/src/main/java/resources/TextService.java
+/var/www/html/tmc_backend/src/main/java/resources/package-info.java
+/var/www/html/tmc_backend/src/main/java/server_core/RequestFilter.java

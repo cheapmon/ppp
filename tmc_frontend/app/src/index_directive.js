@@ -1,69 +1,147 @@
 angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
 
-    $scope.text = "PPP"
-    $scope.text2 = "PPP"
+    //sidebar variables
+    $scope.trigger = $('.hamburger');
+    $scope.overlay = $('.overlay');
+    $scope.option = $('.nav a');
+    $scope.isClosed = false;
+
+    //text fields
+    $scope.text = "";
+    $scope.text2 = "";
     $scope.third = "";
-    //Default link is google
-    $scope.siteName = "http://localhost:8080/rest/datum?company=google";
-    //Set class "active" to clicked item on navbar
-    $(".nav a").on("click", function () {
-        console.log("Hier!");
-        $(".nav").find(".active").removeClass("active");
-        $(this).parent().addClass("active");
-        $scope.activeSite = $(".active").children().html().toLowerCase();
-        console.log($scope.activeSite);
-        $scope.siteName = "http://localhost:8080/rest/datum?company=" + $(".active").children().html().toLowerCase();
-        console.log($scope.siteName);
+
+    //provides List of crawled sites
+    $scope.siteNames = [{
+        name: "Alternate"
+    }, {
+        name: "Amorelie"
+    }, {
+        name: "Apple"
+    }, {
+        name: "Burgerking"
+    }, {
+        name: "Edeka"
+    }, {
+        name: "Google"
+    }, {
+        name: "Microsoft"
+    }, {
+        name: "Payback"
+    }, {
+        name: "Paypal"
+    }, {
+        name: "Rocketbeans"
+    }, {
+        name: "Steam"
+    }, {
+        name: "Subway"
+    }, {
+        name: "Sueddeutsche"
+    }, {
+        name: "Trivago"
+    }, {
+        name: "Twitter"
+    }, {
+        name: "Uni Leipzig"
+    }, {
+        name: "Vine"
+    }, {
+        name: "Whatsapp"
+    }, {
+        name: "Wikimedia"
+    }, {
+        name: "Zalando"
+    }];
+
+    //opens or closes the sidebar
+    $scope.hamburger_cross = function () {
+        if ($scope.isClosed == true) {
+            $scope.overlay.hide();
+            $scope.trigger.removeClass('is-open');
+            $scope.trigger.addClass('is-closed');
+            $scope.isClosed = false;
+        } else {
+            $scope.overlay.show();
+            $scope.trigger.removeClass('is-closed');
+            $scope.trigger.addClass('is-open');
+            $scope.isClosed = true;
+        }
+    };
+
+    //toggle
+    $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+    });
+
+    $scope.toggleBar = function () {
+        $('#wrapper').toggleClass('toggled');
+    };
+
+    //gets the clicked company from the sidebar and receives dates of stored policies
+    $scope.fillDates = function (company, init) {
+        $scope.company = company.toLowerCase();
+
+        if (!init) {
+            $scope.hamburger_cross();
+            $('#wrapper').toggleClass('toggled');
+        }
+        $scope.siteName = "http://139.18.2.12:8080/rest/date?company=" + $scope.company;
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
-            console.log($scope.dates);
         });
-    });
-    console.log(typeof($scope.siteName));
 
-    $(document).on("click", ".test3", function() {
-        $(".test5").html("");
-        $(".test2").parent().parent().find(".test2").removeClass("test2");
-        $(this).addClass("test2");
-        $scope.dateOne = $(".test2").html();
-        console.log($scope.dateOne);
-        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
-            + $scope.dateOne;
-        console.log($scope.siteNameDate);
-        $http.get($scope.siteNameDate).then(function(response){
+    };
+
+    //gets the clicked date and receives the policy
+    $scope.fillText = function (isTextOne) {
+        if (isTextOne) {
+            date = $scope.selectedDateOne;
+        } else {
+            date = $scope.selectedDateTwo;
+        }
+        $scope.siteNameDate = "http://139.18.2.12:8080/rest/text/" + $scope.company.toLowerCase() + "?date=" + date;
+        $http.get($scope.siteNameDate).then(function (response) {
             $scope.text = response.data[0].text;
-        })
-    });
+        });
+        if (isTextOne) {
+            $scope.text1 = $scope.text;
+        } else {
+            $scope.text2 = $scope.text;
+        }
+    };
 
-    $(document).on("click", ".test4", function() {
-        $(".test5").html("");
-        $(".test2").parent().parent().find(".test2").removeClass("test2");
-        $(this).addClass("test2");
-        $scope.dateOne = $(".test2").html();
-        console.log($scope.dateOne);
-        $scope.siteNameDate = "http://localhost:8080/rest/text/" + $scope.activeSite + "?date="
-            + $scope.dateOne;
-        $http.get($scope.siteNameDate).then(function(response){
-            $scope.text2 = response.data[0].text;
-            console.log($scope.siteNameDate);
-        })
-    });
 
-    $(".test6").on("click", function () {
-        diffen();
-    });
 
-    function diffen(){
-        $scope.third = "";
-        $scope.fragment = "";
-        var first = $scope.text;
+    //creates the vis js timeline
+    var container = document.getElementById('visualization');
+    var items = new vis.DataSet([
+        {id: 1, content: 'item 1', start: '2013-04-20'},
+        {id: 2, content: 'item 2', start: '2013-04-14'},
+        {id: 3, content: 'item 3', start: '2013-04-18'},
+        {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+        {id: 5, content: 'item 5', start: '2013-04-25'},
+        {id: 6, content: 'item 6', start: '2013-04-27'}
+    ]);
+
+    // Configuration for the Timeline
+    var options = {};
+
+    // Create a Timeline
+    var timeline = new vis.Timeline(container, items, options);
+
+
+    //function for the imported diff tool
+    $scope.diff = function () {
+        $("#text3").empty();
+        var first = $scope.text1;
         var second = $scope.text2;
 
         var color = '';
         var span = null;
         var diff = JsDiff.diffSentences(first, second);
-        $scope.third = document.getElementById('text3');
-        $scope.fragment = document.createDocumentFragment();
+        var third = document.getElementById('text3');
+        var fragment = document.createDocumentFragment();
         diff.forEach(function (part) {
             // green for additions, red for deletions
             // grey for common parts
@@ -73,10 +151,10 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
             span.style.color = color;
             span.appendChild(document
                 .createTextNode(part.value));
-            $scope.fragment.appendChild(span);
+            fragment.appendChild(span);
         });
 
-        $scope.third.appendChild($scope.fragment);
-    }
-
+        third.appendChild(fragment);
+    };
+    $scope.fillDates("google", true);
 });

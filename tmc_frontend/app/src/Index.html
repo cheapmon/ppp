@@ -11,69 +11,97 @@
     <script src="../../bower_components/jquery/dist/jquery.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../../bower_components/jsdiff/diff.js"></script>
+    <script src="../../bower_components/vis/dist/vis.js"></script>
     <script src="index_directive.js"></script>
 
 
     <!-- css stylesheets -->
+    <link href="../../bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-<!-- navigation bar at the top of the page -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Privacy Policy Crawler</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">Google</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Whatsapp</a></li>
-            <li><a href="#">Wikimedia</a></li>
-        </ul>
-    </div>
-</nav>
-<div ng-controller="pageCtrl">
-    <div class="col-md-3">
-        <p id="text1">{{text}}</p>
-    </div>
-    <div class="col-md-3">
-            <p id="text2">{{text2}}</p>
-    </div>
-    <div class="col-md-1">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Datum linker Text
-            </button>
-            <ul class="dropdown-menu">
-                <li class="dropdown-item" ng-repeat="d in dates">
-                    <a href="#" class="test3 test2">{{d.dateValue}}</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-1">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Datum rechter Text
-            </button>
-            <ul class="dropdown-menu">
-                <li class="dropdown-item" ng-repeat="d in dates">
-                    <a href="#" class="test4 test2">{{d.dateValue}}</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-1">
-    <button class="btn btn-primary test6" type="button">
-        Diff it, Baby!
-    </button>
-    </div>
 
-    <div class="col-md-3">
-        <p id="text3" class="test5"></p>
+<div id="wrapper" ng-controller="pageCtrl">
+    <div class="overlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Privacy Policy Picker
+                </a>
+            </li>
+            <li ng-repeat="s in siteNames">
+                <a href="#" ng-click="fillDates(s.name, false)" data-toggle="offcanvas">{{s.name}}</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas" ng-click="hamburger_cross()">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div class="container-fluid" id="cf1">
+            <div class=row">
+                <div style="margin-bottom: 20px" id="visualization"></div>
+            </div>
+            <div class="row" style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 20px">
+                <div class="col-md-3">
+                    <p style=" text-align: center; padding: 5px 0px">What has changed between </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group s1">
+                        <select class="form-control" ng-model="selectedDateOne" ng-change="fillText(true)" style="margin: 0px 0px">
+                            <option ng-repeat="d in dates" value="{{d.systemDateValue}}">
+                                {{d.systemDateValue}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <p style="text-align: center"> and </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group s1">
+                        <select class="form-control" ng-model="selectedDateTwo" ng-change="fillText(false)">
+                            <option ng-repeat="d in dates" value="{{d.systemDateValue}}">{{d.systemDateValue}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="button" ng-click="diff()" style="">
+                        Start
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default" id="p1">
+                        <div class="panel-body">
+                            <p id="text1">{{text1}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default" id="p2">
+                        <div class="panel-body">
+                            <p id="text3">{{third}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- /#page-content-wrapper -->
+
 </div>
+<!-- /#wrapper -->
 </body>
 </html>
