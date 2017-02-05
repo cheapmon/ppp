@@ -1,0 +1,5 @@
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Projektbeschreibung}{3}{0}{1}
+\beamer@sectionintoc {2}{L\IeC {\"o}sungsansatz}{5}{0}{2}
+\beamer@sectionintoc {3}{Softwarearchitektur}{7}{0}{3}
+\beamer@sectionintoc {4}{Ergebnisse}{12}{0}{4}
