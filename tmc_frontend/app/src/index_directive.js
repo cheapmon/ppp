@@ -11,6 +11,54 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     $scope.text2 = "";
     $scope.third = "";
 
+    $scope.isDateOne = false;
+    $scope.isDateTwo = false;
+    $scope.isTextOneDisplayed = false;
+    $scope.isTextTwoDisplayed = false;
+
+    // date of the displayed text
+    $scope.textDate = "";
+    $scope.textDateOne = "";
+    $scope.textDateTwo = "";
+
+    //Source link
+    $scope.textLink = "";
+    $scope.textLinkOne = "";
+    $scope.textLinkTwo = "";
+
+    //arrays for table view of the policies
+    $scope.textArrayRight = [];
+    $scope.textArrayLeft = [];
+    $scope.diffArray = [];
+
+    //items for the timeline
+    var items = [];
+
+    // Configuration for the Timeline
+    var options = {
+        height: '300px',
+        min: new Date(1975, 0, 1),            // lower limit of visible range
+        max: new Date(2025, 0, 1)             // upper limit of visible range
+    };
+
+    // Create a Timeline
+    var timeline;
+
+    //creates the vis js timeline
+    var container;
+
+    //boolean for timeline item toggle
+    $scope.isTextOne = true;
+
+    //boolean for diff button
+    $scope.diffed = false;
+
+    //saves the second policy
+    var temp;
+
+    //mode of the diff tool. Default is "words"
+    $scope.diffBy = "words";
+
     //provides List of crawled sites
     $scope.siteNames = [{
         name: "Alternate"
@@ -43,7 +91,7 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
     }, {
         name: "Twitter"
     }, {
-        name: "Uni Leipzig"
+        name: "UniLeipzig"
     }, {
         name: "Vine"
     }, {
@@ -85,76 +133,129 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
         if (!init) {
             $scope.hamburger_cross();
             $('#wrapper').toggleClass('toggled');
+
         }
         $scope.siteName = "http://139.18.2.12:8080/rest/date?company=" + $scope.company;
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
+            items = [];
+            $('.vis-timeline').remove();
+
+            container = document.getElementById('visualization');
+
+            for(var i = 0; i < $scope.dates.length; i++){
+                items.push({id: (i+1), content: $scope.dates[i].displayDateValue , start: $scope.dates[i].systemDateValue })
+            }
+            timeline = new vis.Timeline(container);
+            timeline.setOptions(options);
+            timeline.setItems(items);
+
+            timeline.on('select', function (properties) {
+                var itemID = properties.items[0];
+
+                //creates array of filtered elements by the id of the clicked item on the timeline
+                var dateObject = items.filter(function(x){
+                    return x.id === itemID;
+                });
+
+                if(dateObject[0] && dateObject[0].start) {
+                    var textSystemDate = dateObject[0].start;
+                    $scope.textDate = dateObject[0].content;
+
+                    if($scope.isTextOne){
+                        $scope.textDateOne = $scope.textDate;
+                    } else {
+                        $scope.textDateTwo = $scope.textDate;
+                    }
+
+                    var success = $scope.fillText($scope.isTextOne, textSystemDate);
+                    if(success){
+                        $scope.isTextOne = !$scope.isTextOne;
+                    }
+                }
+            });
         });
 
     };
 
     //gets the clicked date and receives the policy
-    $scope.fillText = function (isTextOne) {
-        if (isTextOne) {
-            date = $scope.selectedDateOne;
-        } else {
-            date = $scope.selectedDateTwo;
-        }
-        $scope.siteNameDate = "http://139.18.2.12:8080/rest/text/" + $scope.company.toLowerCase() + "?date=" + date;
+    $scope.fillText = function (isTextOne, textSystemDate) {
+
+        $scope.siteNameDate = "http://139.18.2.12:8080/rest/text/" + $scope.company.toLowerCase() + "?date=" + textSystemDate;
         $http.get($scope.siteNameDate).then(function (response) {
             $scope.text = response.data[0].text;
+            $scope.textLink = response.data[0].link;
+            if (isTextOne) {
+                $scope.textArrayRight = $scope.text.split('\n');
+                $scope.textLinkOne = $scope.textLink;
+                $scope.text1 = $scope.text;
+                $scope.isTextOneDisplayed = true;
+                $scope.isDateOne = true;
+            } else {
+                $scope.textArrayLeft = $scope.text.split('\n');
+                $scope.textLinkTwo = $scope.textLink;
+                $scope.text2 = $scope.text;
+                $scope.isTextTwoDisplayed = true;
+                $scope.isDateTwo = true;
+            }
         });
-        if (isTextOne) {
-            $scope.text1 = $scope.text;
-        } else {
-            $scope.text2 = $scope.text;
-        }
+        return true;
     };
-
-
-
-    //creates the vis js timeline
-    var container = document.getElementById('visualization');
-    var items = new vis.DataSet([
-        {id: 1, content: 'item 1', start: '2013-04-20'},
-        {id: 2, content: 'item 2', start: '2013-04-14'},
-        {id: 3, content: 'item 3', start: '2013-04-18'},
-        {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
-        {id: 5, content: 'item 5', start: '2013-04-25'},
-        {id: 6, content: 'item 6', start: '2013-04-27'}
-    ]);
-
-    // Configuration for the Timeline
-    var options = {};
-
-    // Create a Timeline
-    var timeline = new vis.Timeline(container, items, options);
-
 
     //function for the imported diff tool
     $scope.diff = function () {
-        $("#text3").empty();
-        var first = $scope.text1;
-        var second = $scope.text2;
+        /*if($scope.diffed){
+            $("#text3").empty();
+            $scope.text2 = temp;
+            $scope.diffed = !$scope.diffed;
+        }else if($scope.text1 && $scope.text2){*/
+            if($scope.isTextTwoDisplayed) {
 
-        var color = '';
-        var span = null;
-        var diff = JsDiff.diffSentences(first, second);
-        var third = document.getElementById('text3');
-        var fragment = document.createDocumentFragment();
-        diff.forEach(function (part) {
-            // green for additions, red for deletions
-            // grey for common parts
-            color = part.added ? 'green' :
-                part.removed ? 'red' : 'grey';
-            span = document.createElement('span');
-            span.style.color = color;
-            span.appendChild(document
-                .createTextNode(part.value));
-            fragment.appendChild(span);
-        });
+                temp = $scope.text2;
+                $("#text3").empty();
 
-        third.appendChild(fragment);
+                var first = $scope.text1;
+                var second = $scope.text2;
+
+                var color = '';
+                var span = null;
+                var diff;
+
+                // switch between the different options
+                switch ($scope.diffBy) {
+
+                    case "words":
+                        diff = JsDiff.diffWords(first, second);
+                        break;
+                    case "sentences":
+                        diff = JsDiff.diffSentences(first, second);
+                        break;
+                }
+
+                var third = document.getElementById('text3');
+                var fragment = document.createDocumentFragment();
+                diff.forEach(function (part) {
+                    // blue for additions, red for deletions
+                    // grey for common parts
+                    color = part.added ? 'blue' :
+                        part.removed ? 'red' : 'grey';
+                    span = document.createElement('span');
+                    span.style.color = color;
+                    span.appendChild(document
+                        .createTextNode(part.value));
+                    fragment.appendChild(span);
+                });
+
+                third.appendChild(fragment);
+
+                $scope.isTextTwoDisplayed = false;
+            }else{
+                $scope.isTextTwoDisplayed = true;
+            }
+        /*  $scope.diffed = !$scope.diffed;
+       }else{
+            return false;
+        }*/
     };
     $scope.fillDates("google", true);
 });
