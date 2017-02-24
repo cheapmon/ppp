@@ -37,7 +37,7 @@ public class CrawlerStarter extends Thread {
         // Call crawl.rb for every site.
         for(String s : sites) {
             try {
-                Process p = Runtime.getRuntime().exec("ruby " + System.getProperty("user.home") +  "/html/tmc_extraction/src/crawl.rb " + s + " " + sys);
+                Process p = Runtime.getRuntime().exec("ruby " + System.getProperty("user.home") +  "/html/tmc_extraction/src/Crawler.rb " + s + " " + sys);
                 p.waitFor();
                 // Check if the extraction finished with errors.
                 if(p.exitValue() == 0) {

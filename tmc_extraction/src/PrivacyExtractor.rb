@@ -60,13 +60,7 @@ module PrivacyExtractor
 
 	# Init local variables
 	@links, @dates = [], []
-	@db_path = ""
-	File.open("./../config.ppp", "r") do |line|
-		option = line.split(": ")
-		if option[0] == "DB-PATH"
-			@db_path = option[1]
-		end
-	end
+	@db_path = "./../../policies.db"
 	@db = SQLite3::Database.new @db_path
 	
 	# Extract links to older versions from own archive or from archive.org
