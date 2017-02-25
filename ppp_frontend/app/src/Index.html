@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tmc">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy Picker</title>
+
+    <!-- bower dependencies -->
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="../../bower_components/angular-route/angular-route.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../bower_components/jsdiff/diff.js"></script>
+    <script src="../../bower_components/vis/dist/vis.js"></script>
+    <script src="index_directive.js"></script>
+
+
+    <!-- css stylesheets -->
+    <link href="../../bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div id="wrapper" ng-controller="pageCtrl">
+    <div class="overlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Privacy Policy Picker
+                </a>
+            </li>
+            <li ng-repeat="s in siteNames">
+                <a href="#" ng-click="fillDates(s.name, false)" data-toggle="offcanvas">{{s.name}}</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas" ng-click="hamburger_cross()">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div class="container-fluid" id="cf1">
+            <!-- label field -->
+            <div class="row"
+                 style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 0px ; text-align: center">
+                <p>Select the date of the <b>{{isTextOne ? "first" : "second"}}</b> privacy policy for
+                    <b>{{company}}</b> on the timeline.</p>
+            </div>
+            <!-- Timeline -->
+            <div class="row" style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 0px">
+                <div style="margin-bottom: 20px" id="visualization"></div>
+            </div>
+            <!-- select menu -->
+            <div class="row"
+                 style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 0px; text-align: center">
+                <div class="col-md-6">
+                    <button class="btn btn-primary" type="button" ng-click="diff()"
+                            style="background-color: #D5DDF6; outline: none; color: black; border-color: #97B0F8">
+                        Show {{isTextTwoDisplayed ? "what has changed" : "second policy" }}
+                    </button>
+                </div>
+                <div class="col-md-2" align="right">
+                    <p>Diff by: </p>
+                </div>
+                <div class="col-md-4" align="left" style="vertical-align: middle">
+                    <form>
+                        <label class="radio-inline">
+                            <input name="r1" type="radio" ng-model="diffBy" checked="checked" value="words">
+                            <b>words</b>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="diffBy" value="sentences">
+                            <b>sentences</b>
+                        </label>
+                    </form>
+                </div>
+            </div>
+
+            <!-- label fields for URL -->
+            <div class="row" style="text-align: center">
+                <div class="col-md-6" ng-show="isDateOne">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p><b>Date:</b> {{textDateOne}} <a target="_blank" ng-href="{{textLinkOne}}"> <b>Source</b></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" ng-show="isDateTwo">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p><b>Date:</b> {{textDateTwo}} <a target="_blank" ng-href="{{textLinkTwo}}"> <b>Source</b></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- text fields -->
+            <div class="row">
+                <div class="col-md-6" ng-show="isTextOneDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in textArrayRight track by $index">
+                            <td>{{$index}}</td>
+                            <td>{{line}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6" ng-show="isTextTwoDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in textArrayLeft track by $index">
+                            <td>{{$index}}</td>
+                            <td>{{line}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6" ng-hide="isTextTwoDisplayed" id="text3">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+</body>
+</html>
