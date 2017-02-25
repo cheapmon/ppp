@@ -101,10 +101,10 @@ __Adding a website__
 	- _.own_archive_: Whether the website has its own archive or not.
 	- _.url_: The link to the website where the privacy policy is present.
 	- _.table_name_: The name of the database table in which the policy versions are stored. (e.g. "GOOGLE")
-    - _.xpath_: A xpath for the html container including the privacy policy.
+   	- _.xpath_: A xpath for the html container including the privacy policy.
     
     Additional options can be found in the documentation for `PrivacyExtractor.rb`.
- - `cd` to `ppp_extraction/src`.
+- `cd` to `ppp_extraction/src`.
 - Run `ruby crawl.rb _website_ fetch`.
     
 Mind the naming conventions!
