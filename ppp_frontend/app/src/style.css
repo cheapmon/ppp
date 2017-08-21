@@ -149,6 +149,22 @@ html { height: 100%;}
     box-shadow: none;
 }
 
+.sidebar-nav li div span {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 0;
+}
+
+.sidebar-nav li div input {
+    padding-left: 5px;
+    background-color: #fff;
+    border-radius: 0;
+    outline: none;
+}
+
+
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/

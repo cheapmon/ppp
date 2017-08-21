@@ -1,10 +1,11 @@
-angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
+angular.module('tmc', ['angular-loading-bar']).controller('pageCtrl', function ($scope, $http) {
 
     //sidebar variables
     $scope.trigger = $('.hamburger');
     $scope.overlay = $('.overlay');
     $scope.option = $('.nav a');
     $scope.isClosed = false;
+    $scope.filterText = "";
 
     //text fields
     $scope.text = "";
@@ -135,7 +136,7 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
             $('#wrapper').toggleClass('toggled');
 
         }
-        $scope.siteName = "http://139.18.2.12:8080/rest/date?company=" + $scope.company;
+        $scope.siteName = "http://localhost:8080/rest/date?company=" + $scope.company;
         $http.get($scope.siteName).then(function (response) {
             $scope.dates = response.data;
             items = [];
@@ -232,30 +233,26 @@ angular.module('tmc', []).controller('pageCtrl', function ($scope, $http) {
                         break;
                 }
 
-                var third = document.getElementById('text3');
-                var fragment = document.createDocumentFragment();
+                function diffText(text, color){
+                    this.text = text;
+                    this.color = color;
+                }
+
+                var diffIndex = 0;
                 diff.forEach(function (part) {
                     // blue for additions, red for deletions
                     // grey for common parts
                     color = part.added ? 'blue' :
                         part.removed ? 'red' : 'grey';
-                    span = document.createElement('span');
-                    span.style.color = color;
-                    span.appendChild(document
-                        .createTextNode(part.value));
-                    fragment.appendChild(span);
-                });
 
-                third.appendChild(fragment);
+                    $scope.diffArray[diffIndex] = new diffText(part.value , color);
+                    diffIndex++;
+                });
 
                 $scope.isTextTwoDisplayed = false;
             }else{
                 $scope.isTextTwoDisplayed = true;
             }
-        /*  $scope.diffed = !$scope.diffed;
-       }else{
-            return false;
-        }*/
     };
     $scope.fillDates("google", true);
 });

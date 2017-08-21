@@ -34,7 +34,16 @@
                     Privacy Policy Picker
                 </a>
             </li>
-            <li ng-repeat="s in siteNames">
+            <li>
+                <a href="#" ng-click="" data-toggle="offcanvas">Eigene Texte vergleichen</a>
+            </li>
+            <li>
+                <div class="input-group">
+                    <span class="input-group-addon"><i style="color: #fff" class="glyphicon glyphicon-search"></i></span>
+                    <input ng-model="filterText" type="text" class="form-control" placeholder="Filter">
+                </div>
+            </li>
+            <li ng-repeat="s in siteNames  | filter: filterText">
                 <a href="#" ng-click="fillDates(s.name, false)" data-toggle="offcanvas">{{s.name}}</a>
             </li>
         </ul>
@@ -120,7 +129,13 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-6" ng-hide="isTextTwoDisplayed" id="text3">
+                <div class="col-md-6" ng-hide="isTextTwoDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in diffArray track by $index">
+                            <td>{{$index}}</td>
+                            <td style="color: {{line.color}};">{{line.text}}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
