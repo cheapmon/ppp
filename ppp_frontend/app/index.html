@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy Picker</title>
+
+    <!-- css stylesheets -->
+    <link rel="stylesheet" href="lib/bower/vis/dist/vis.css" type="text/css">
+    <link rel="stylesheet" href="lib/bower/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body ng-app="ppp">
+<div ng-view></div>
+
+<!-- bower dependencies -->
+<script src="lib/bower/angular/angular.js"></script>
+<script src="lib/bower/angular-route/angular-route.js"></script>
+<script src="lib/bower/jquery/dist/jquery.js"></script>
+<script src="lib/bower/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/bower/jsdiff/diff.js"></script>
+<script src="lib/bower/vis/dist/vis.js"></script>
+
+<!-- JavaScript -->
+<script src="app.js"></script>
+<script src="src/edit/edit.controller.js"></script>
+<script src="src/compare/compare.controller.js"></script>
+<script src="src/common/data.service.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- header of the login field -->
+<div class="modal-header">
+    <h3>Login</h3>
+</div>
+
+<!-- Inputs -->
+<div class="modal-body no-text-overflow">
+    <form>
+        <div class="container">
+            <label>Nutzer</label>
+            <input type="text" placeholder="Nutzer eingeben" required>
+
+            <label>Passwort</label>
+            <input type="password" placeholder="Passwort eingeben" required>
+        </div>
+    </form>
+</div>
+
+<!-- continue or abort -->
+<div class="modal-footer">
+    <button title="Weiter" class="btn btn-success" ng-click="ok()">Weiter</button>
+    <button title="Abbrechen" type="button" class="close" aria-hidden="true" ng-click="cancel()">Abbrechen</button>
+</div>

@@ -23,7 +23,7 @@ public class DatabaseInitializer {
 	/**
      * path to database
      */
-    private static final String DB_PATH = System.getProperty("user.home") + "/Desktop/Main/Entwicklung/tmcrawl/policies.db";
+    private static final String DB_PATH = System.getProperty("user.home") + "/Desktop/Main/Entwicklung/ppp/policies.db";
     
     /**
      * load new JDBC driver 
