@@ -310,3 +310,9 @@ html { height: 100%;}
     margin-left: 60px;
     margin-right: 60px;
 }
+.glyphicon-ok{
+    color: #23b323;
+}
+.checked{
+    background-color: #ccfdcc;
+}

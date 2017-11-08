@@ -13,6 +13,29 @@
 </head>
 
 <body ng-app="ppp">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" ng-href="#/compare">Privacy Policy Picker</a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a ng-href="#/edit">Edit</a></li>
+            <li><a ng-href="#/info"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+            <li><a ng-href="#top"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
+        </ul>
+
+        <ul class="nav navbar-nav">
+            <li><a>Webseite</a></li>
+            <li><a>Dokumente</a></li>
+            <li><a>Einstellungen</a></li>
+            <li><a>Analyse</a></li>
+        </ul>
+
+        <div class="nav navbar-nav navbar-right">
+            <button type="button" class="btn btn-default navbar-btn">Login</button>
+        </div>
+    </div>
+</nav>
 <div ng-view></div>
 
 <!-- bower dependencies -->
@@ -28,6 +51,7 @@
 <script src="src/edit/edit.controller.js"></script>
 <script src="src/compare/compare.controller.js"></script>
 <script src="src/common/data.service.js"></script>
+<script src="src/common/login.service.js"></script>
 
 </body>
 </html>

@@ -96,39 +96,17 @@ angular.module('ppp')
         name: "Zalando"
     }];
 
-    //opens or closes the sidebar
-    $scope.hamburger_cross = function () {
-        if ($scope.isClosed == true) {
-            $scope.overlay.hide();
-            $scope.trigger.removeClass('is-open');
-            $scope.trigger.addClass('is-closed');
-            $scope.isClosed = false;
-        } else {
-            $scope.overlay.show();
-            $scope.trigger.removeClass('is-closed');
-            $scope.trigger.addClass('is-open');
-            $scope.isClosed = true;
-        }
+    //marks the current step as done
+    $scope.togglecheck = function(step){
+        stepclass = '.step'+ step;
+        element = angular.element(document.querySelector(stepclass));
+        console.log(element);
+        element.addClass('checked');
     };
-
-    //toggle
-    $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').toggleClass('toggled');
-    });
-
-    $scope.toggleBar = function () {
-        $('#wrapper').toggleClass('toggled');
-    };
-
     //gets the clicked company from the sidebar and receives dates of stored policies
-    $scope.fillDates = function (company, init) {
+    $scope.fillDates = function (company) {
         $scope.company = company.toLowerCase();
 
-        if (!init) {
-            $scope.hamburger_cross();
-            $('#wrapper').toggleClass('toggled');
-
-        }
         DataService.loadDatesForCompany($scope.company).then(function (response) {
             $scope.dates = response.data;
             items = [];
