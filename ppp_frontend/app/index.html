@@ -24,30 +24,33 @@
             <li><a ng-href="#top"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
         </ul>
 
-        <ul class="nav navbar-nav">
-            <li><a>Webseite</a></li>
-            <li><a>Dokumente</a></li>
-            <li><a>Einstellungen</a></li>
-            <li><a>Analyse</a></li>
-        </ul>
-
-        <div class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-default navbar-btn">Login</button>
+        <div class="nav navbar-nav navbar-right" ng-controller="IndexCtrl">
+            <button class="btn btn-default navbar-btn" ng-if="isLoggedIn" ng-click="logout()">
+                <span class="glyphicon glyphicon glyphicon-off"></span>
+                Ausloggen
+            </button>
+            <button class="btn btn-default navbar-btn" ng-if="!isLoggedIn" ng-click="showLogin()">
+                <span class="glyphicon glyphicon glyphicon-user"></span>
+                Login
+            </button>
         </div>
     </div>
 </nav>
-<div ng-view></div>
+<div class="container-fluid centered" ng-view></div>
 
 <!-- bower dependencies -->
 <script src="lib/bower/angular/angular.js"></script>
 <script src="lib/bower/angular-route/angular-route.js"></script>
 <script src="lib/bower/jquery/dist/jquery.js"></script>
 <script src="lib/bower/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="lib/bower/angular-cookies/angular-cookies.js"></script>
 <script src="lib/bower/jsdiff/diff.js"></script>
 <script src="lib/bower/vis/dist/vis.js"></script>
 
 <!-- JavaScript -->
 <script src="app.js"></script>
+<script src="index-controller.js"></script>
 <script src="src/edit/edit.controller.js"></script>
 <script src="src/compare/compare.controller.js"></script>
 <script src="src/common/data.service.js"></script>

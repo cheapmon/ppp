@@ -1,10 +1,13 @@
-angular.module('ppp').service('LoginService', function($http, backend, $cookies, $rootScope, $q) {
+angular.module('ppp').service('LoginService', function($http, backend, $cookies, $rootScope, $q, $location) {
 
     var self = this;
 
     self.login = function(user, password) {
          return $http.get(backend.url + 'security/login?user=' + user + '&pw=' + password).then(function(promise) {
              $rootScope.isLoggedIn = true;
+             console.log(promise);
+             self.setAuthHeaderAndCookie(promise.data);
+             $location.path('/compare');
              return promise;
          }, function(promise) {
              $rootScope.isLoggedIn = false;
@@ -18,6 +21,7 @@ angular.module('ppp').service('LoginService', function($http, backend, $cookies,
         $http.defaults.headers.common['Authorization'] = null;
         $cookies.remove('authorization');
         $rootScope.isLoggedIn = false;
+        $location.path('/compare');
     };
 
     self.setAuthHeaderAndCookie = function(token) {

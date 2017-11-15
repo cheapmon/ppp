@@ -1,6 +1,6 @@
 'use strict';
 //TODO resolve: zuerst laden dann anzeigen
-angular.module('ppp',['ngRoute'])
+angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap'])
 .config(function($routeProvider){
     $routeProvider
         .when('/compare', {
@@ -10,11 +10,17 @@ angular.module('ppp',['ngRoute'])
 
         .when('/edit', {
             templateUrl: 'src/edit/edit.template.html',
-            controller: 'EditCtrl'
+            controller: 'EditCtrl',
+            resolve: {
+                authorize: function (LoginService) {
+                    return LoginService.ping();
+                }
+            }
         })
 
         .otherwise({
             redirectTo: '/compare'
+
         });
 })
     .constant('backend', {

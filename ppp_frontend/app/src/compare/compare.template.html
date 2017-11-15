@@ -1,100 +1,127 @@
-<div ng-controller="CompareCtrl">
-    <div id="wrapper">
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid" id="cf1">
-                <!-- label field -->
-                <div class="well step1" >Schritt 1: Webseite auswählen
-                    <span class="glyphicon glyphicon-ok"  ng-init="showStepOne = false" ng-show="showOkOne"></span>
-                    <span class="glyphicon glyphicon-cog pull-right" ng-click="showOkOne = false; showStepOne = true"></span>
-                </div>
-                <div class="panel panel-default row" ng-init="showStepOne = true" ng-show="showStepOne">
-                    <div class="panel-body col-md-4" ng-click="togglecheck(3); $parent.showStepOne = false; $parent.showOkOne = true; fillDates(name.name)" ng-repeat="name in siteNames">{{name.name}}</div>
-                </div>
-                <div class="well">Schritt 2: Dokument auswählen</div>
-                <!-- Timeline -->
-                <div class="row" style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 0px">
-                    <div style="margin-bottom: 20px" id="visualization"></div>
-                </div>
-                <!-- label fields for URL -->
-                <div class="row" style="text-align: center">
-                    <div class="col-md-6" ng-show="isDateOne">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <p>1. Dokument: <b>Datum:</b> {{textDateOne}} <a target="_blank"
-                                                                                 ng-href="{{textLinkOne}}">
-                                    <b>Original</b></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6" ng-show="isDateTwo">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <p>2. Dokument: <b>Datum:</b> {{textDateTwo}} <a target="_blank"
-                                                                                 ng-href="{{textLinkTwo}}">
-                                    <b>Original</b></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="well">Schritt 3: Einstellungen</div>
-                <!-- select menu -->
-                <div class="row"
-                     style="border-style: solid; border-width: 2px; padding: 10px 0px; margin: 10px 0px; text-align: center">
-                    <div class="col-md-2" align="right">
-                        <p>Diff by: </p>
-                    </div>
-                    <div class="col-md-8" align="left" style="vertical-align: middle">
-                        <form>
-                            <label class="radio-inline">
-                                <input type="radio" ng-model="diffBy" checked value="sentences">
-                                <b>sentences</b>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" ng-model="diffBy" value="words">
-                                <b>words</b>
-                            </label>
-                        </form>
-                    </div>
-                </div>
+<div class="view" ng-controller="CompareCtrl">
+    <div class="container-fluid">
 
-                <div class="well">Schritt 4: Analyse
-                    <button class="btn btn-primary" type="button" ng-click="diff()"
-                            style="background-color: #D5DDF6; outline: none; color: black; border-color: #97B0F8">
-                        Zeige {{isTextTwoDisplayed ? "Unterschiede" : "Vergleichsdokument" }}
-                    </button>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row align-middle">
+                        <div class="col-md-3">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-target="#collapse1">Schritt 1: Webseite auswählen</a>
+                            </h4>
+                        </div>
+                        <div class="col-md-9" style="text-align: center">
+                            <p>{{company}}</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- text fields -->
-                <div class="row">
-                    <div class="col-md-6" ng-show="isTextOneDisplayed">
-                        <table class="table table-hover">
-                            <tr ng-repeat="line in textArrayRight track by $index">
-                                <td>{{$index}}</td>
-                                <td>{{line}}</td>
-                            </tr>
-                        </table>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body" data-toggle="collapse"
+                         ng-click="shut(1);fillDates(name.name)"
+                         ng-repeat="name in siteNames">{{name.name}}
                     </div>
-                    <div class="col-md-6" ng-show="isTextTwoDisplayed">
-                        <table class="table table-hover">
-                            <tr ng-repeat="line in textArrayLeft track by $index">
-                                <td>{{$index}}</td>
-                                <td>{{line}}</td>
-                            </tr>
-                        </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row align-middle">
+                        <div class="col-md-3" style="margin-top: 5px">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-target="#collapse2" ng-click="datesPicked = true">Schritt 2: Dokument auswählen</a>
+                            </h4>
+                        </div>
+
+                        <div class="col-md-4" style="margin-top: 5px" ng-show="isDateOne">
+                            <p>1. Dokument: <b>Datum:</b> {{textDateOne}} <a target="_blank"
+                                                                             ng-href="{{textLinkOne}}">
+                                <b>Original</b></a></p>
+                        </div>
+
+                        <div class="col-md-4" style="margin-top: 5px" ng-show="isDateTwo">
+                            <p>2. Dokument: <b>Datum:</b> {{textDateTwo}} <a target="_blank"
+                                                                             ng-href="{{textLinkTwo}}">
+                                <b>Original</b></a></p>
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-default pull-right" ng-show="datesPicked" ng-click="shut(2); datesPicked = false">
+                                Übernehmen
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-md-6" ng-hide="isTextTwoDisplayed">
-                        <table class="table table-hover">
-                            <tr ng-repeat="line in diffArray track by $index">
-                                <td>{{$index}}</td>
-                                <td style="color: {{line.color}};">{{line.text}}</td>
-                            </tr>
-                        </table>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body" data-toggle="collapse">
+                        <div id="visualization"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-target="#collapse3">Schritt 3: Einstellungen</a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body" data-toggle="collapse">
+                        <div style="vertical-align: middle">
+                            <form>
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="diffBy" checked value="sentences">
+                                    <b>sentences</b>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="diffBy" value="words">
+                                    <b>words</b>
+                                </label>
+                            </form>
+                        </div>
+                        <button class="btn btn-default navbar-btn" ng-click="shut(3)">
+                            Übernehmen
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <div class="well">Schritt 4: Analyse
+                <button class="btn btn-primary" type="button" ng-click="diff()"
+                        style="background-color: #D5DDF6; outline: none; color: black; border-color: #97B0F8">
+                    Zeige {{isTextTwoDisplayed ? "Unterschiede" : "Vergleichsdokument" }}
+                </button>
+            </div>
+            <!-- text fields -->
+            <div class="row">
+                <div class="col-md-6" ng-show="isTextOneDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in textArrayRight track by $index">
+                            <td>{{$index}}</td>
+                            <td>{{line}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6" ng-show="isTextTwoDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in textArrayLeft track by $index">
+                            <td>{{$index}}</td>
+                            <td>{{line}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6" ng-hide="isTextTwoDisplayed">
+                    <table class="table table-hover">
+                        <tr ng-repeat="line in diffArray track by $index">
+                            <td>{{$index}}</td>
+                            <td style="color: {{line.color}};">{{line.text}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
-</div>
-<!-- /#wrapper -->
+
