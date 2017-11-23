@@ -1,6 +1,6 @@
 'use strict';
 //TODO resolve: zuerst laden dann anzeigen
-angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap'])
+angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularFileUpload'])
 .config(function($routeProvider){
     $routeProvider
         .when('/compare', {
@@ -8,9 +8,9 @@ angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap'])
             controller: 'CompareCtrl'
         })
 
-        .when('/edit', {
-            templateUrl: 'src/edit/edit.template.html',
-            controller: 'EditCtrl',
+        .when('/upload', {
+            templateUrl: 'src/upload/upload.template.html',
+            controller: 'UploadCtrl',
             resolve: {
                 authorize: function (LoginService) {
                     return LoginService.ping();

@@ -1,0 +1,36 @@
+<div ng-controller="UploadCtrl">
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="33%">Titel</th>
+            <th>Hinzugefügt am</th>
+            <th>Aktionen</th>
+            <th width="33%">Vorschau </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <h3>Texte hinzufügen</h3>
+    <div class="col-md-4">
+        <div ng-show="uploader.isHTML5">
+            <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                Datei hier ablegen
+            </div>
+        </div>
+        <h4 class="text-center"> oder </h4>
+        <input type="file" nv-file-select="" uploader="uploader" multiple/><br/>
+    </div>
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="textname">Titel:</label>
+            <input type="text" class="form-control" id="textname">
+            <label for="textbody">Inhalt:</label>
+            <textarea placeholder="Hier können Sie ihren eigenen Text einfügen." class="form-control" rows="10"
+                      id="textbody"
+                      ng-model="areaText"></textarea>
+        </div>
+        <button type="button" ng-click="uploadText(areaText)" class="btn btn-default">Upload</button>
+    </div>
+</div>

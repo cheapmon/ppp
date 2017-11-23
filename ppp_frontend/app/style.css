@@ -1,8 +1,11 @@
 body {
     position: relative;
-    overflow: hidden;
+
 }
 
+textarea {
+    resize: none;
+}
 .navbar-btn {
     margin-right: 10%;
 }
@@ -25,4 +28,8 @@ body {
     margin-top: 60px;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.my-drop-zone {
+    border: dotted 2px lightgray;
 }
