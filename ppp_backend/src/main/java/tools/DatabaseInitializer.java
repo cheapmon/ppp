@@ -112,7 +112,48 @@ public class DatabaseInitializer {
 			e.printStackTrace();
 		}
         System.out.print(res);
-    }    
+    }
+    
+    /**
+     * (re)creates new table for users custom texts
+     */
+    public static void createTable(String user) {
+        // SQLite connection string
+        String url = "jdbc:sqlite:" + DB_PATH;
+        
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS "+ user.toLowerCase() +" (\n"
+                + "	text text NOT NULL,\n"
+                + "	link text PRIMARY KEY, \n"
+                + " date text NOT NULL \n"
+                + ");";
+        
+        try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement()) {
+            // create a new table
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    /**
+     * used when a user is removed
+     * @param user
+     */
+    public static void deleteTable(String user) {
+        // SQLite connection string
+        String url = "jdbc:sqlite:" + DB_PATH;
+        
+        // SQL statement for creating a new table
+        String sql = "DROP TABLE "+ user.toLowerCase() +";";      
+        try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement()) {
+            // create a new table
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     /**
      * main method

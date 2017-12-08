@@ -50,4 +50,64 @@ public class TextLoader {
         db.connection.close();
         return allDates;
     }
+    
+    public List<Texts> loadTexts(String user) throws SQLException{
+        //get database instance
+        DatabaseInitializer db = DatabaseInitializer.getInstance();
+        //set and initialize db connection
+        db.connection = null;
+        db.initDBConnection();
+        //initialize result set, statement and list
+        PreparedStatement ps = null;
+        ResultSet rs;
+        List<Texts> userTexts = new ArrayList<Texts>();
+        try {
+            String querie = "SELECT TEXT, DATE, LINK FROM "+ user.toLowerCase();
+            ps = db.connection.prepareStatement(querie);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Texts t = new Texts(rs.getString(1),rs.getString(2), rs.getString(3));
+                userTexts.add(t);
+                //System.out.println(t);
+            }
+        } catch (SQLException e) {
+            System.out.println("Fehler: Datenbankabfrage");
+            e.printStackTrace();
+        } 
+        db.connection.close();
+        return userTexts;
+    }
+    
+    public void setText(String text, String link, String date, String user) throws SQLException{
+        //get database instance
+        DatabaseInitializer db = DatabaseInitializer.getInstance();
+        //set and initialize db connection
+        db.connection = null;
+        db.initDBConnection();
+        //initialize result set, statement and list
+        PreparedStatement ps = null;
+        
+		try {
+			String insert = "INSERT INTO "+ user.toLowerCase() +"(text,link,date) VALUES(?,?,?)";
+			ps = db.connection.prepareStatement(insert);
+			ps.setString(1, text);
+			ps.setString(2, link);
+			ps.setString(3, date);
+			ps.executeUpdate();
+			db.connection.close();
+		} catch (SQLException e) {
+			System.out.println("Fehler: Datenbankabfrage");
+			e.printStackTrace();
+		}
+    }
+    public static void main (String[] args) {
+    	TextLoader tl = new TextLoader();
+    	try {
+    		DatabaseInitializer.deleteTable("test");
+			tl.setText("Testtext","www.scha.de","22-12-22","apored");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
