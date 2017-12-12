@@ -22,16 +22,11 @@
             <li><a ng-href="#/upload"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
         </ul>
 
-        <div class="nav navbar-nav navbar-right" ng-controller="IndexCtrl">
-            <button class="btn btn-default navbar-btn" ng-if="isLoggedIn" ng-click="logout()">
-                <span class="glyphicon glyphicon glyphicon-off"></span>
-                Ausloggen
-            </button>
-            <button class="btn btn-default navbar-btn" ng-if="!isLoggedIn" ng-click="showLogin()">
-                <span class="glyphicon glyphicon glyphicon-user"></span>
-                Login
-            </button>
-        </div>
+        <ul class="nav navbar-nav navbar-right" ng-controller="IndexCtrl">
+            <li ng-if="isLoggedIn" ng-click="showModal('userEdit')"><a><span class="glyphicon glyphicon-user"></span> {{userName}}</a></li>
+            <li ng-if="isLoggedIn" ng-click="logout()"><a><span class="glyphicon glyphicon-log-out"></span> Ausloggen</a></li>
+            <li ng-if="!isLoggedIn" ng-click="showModal('login')"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container-fluid centered" ng-view></div>
@@ -46,6 +41,7 @@
 <script src="lib/bower/jsdiff/diff.js"></script>
 <script src="lib/bower/vis/dist/vis.js"></script>
 <script src="lib/bower/angular-file-upload/dist/angular-file-upload.js"></script>
+<script src="lib/bower/angular-local-storage/dist/angular-local-storage.js"></script>
 
 <!-- JavaScript -->
 <script src="app.js"></script>

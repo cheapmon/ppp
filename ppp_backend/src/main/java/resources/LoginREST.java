@@ -1,5 +1,8 @@
 package resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -14,7 +17,7 @@ public class LoginREST {
 
 	@GET
 	@Path("login")
-	public Response logIn(@QueryParam("pw") String password, @QueryParam("user") String user) {
+	public Response logIn( @QueryParam("user") String user, @QueryParam("pw") String password) {
 		// TODO
 		if (UserDataService.checkUser(user, password)) {
 			Token token = tools.SecurityService.grantAccess();
@@ -43,6 +46,18 @@ public class LoginREST {
 			return Response.status(510).build();
 		}
 	}
+	
+	@GET
+	@Path("getUsers")
+	public static List<String> getUsers(@QueryParam("pw") String pw) {
+		List<String> users = new ArrayList<String>();
+		if(UserDataService.checkUser("admin", pw)) {
+			return UserDataService.getUsers();
+		}else {
+			users.add("Nicht berechtigt!");
+			return users;
+		}
+	}
 
 	@GET
 	@Path("changeData")
@@ -53,7 +68,11 @@ public class LoginREST {
 		Response response = Response.status(510).build();
 		
 		if(SecurityService.checkAccess(tokenId) && UserDataService.checkUser(user, password)){
-			
+			System.out.println(user);
+			System.out.println(password);
+			System.out.println(targetUser);
+			System.out.println(targetPw);
+			System.out.println(operation);
 			switch(operation) {
 			case("add"):
 				if(user.toLowerCase().equals("admin")) {

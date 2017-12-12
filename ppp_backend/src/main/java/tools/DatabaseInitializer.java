@@ -132,6 +132,7 @@ public class DatabaseInitializer {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -150,6 +151,7 @@ public class DatabaseInitializer {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

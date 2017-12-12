@@ -1,6 +1,6 @@
 'use strict';
 //TODO resolve: zuerst laden dann anzeigen
-angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularFileUpload'])
+angular.module('ppp',['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularFileUpload','LocalStorageModule'])
 .config(function($routeProvider){
     $routeProvider
         .when('/compare', {

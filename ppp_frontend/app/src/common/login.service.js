@@ -1,4 +1,4 @@
-angular.module('ppp').service('LoginService', function($http, backend, $cookies, $rootScope, $q, $location) {
+angular.module('ppp').service('LoginService', function($http, backend, $cookies, $rootScope, $q, $location, localStorageService) {
 
     var self = this;
 
@@ -6,9 +6,9 @@ angular.module('ppp').service('LoginService', function($http, backend, $cookies,
          return $http.get(backend.url + 'security/login?user=' + user + '&pw=' + password).then(function(promise) {
              $rootScope.isLoggedIn = true;
              $rootScope.userName = user;
-             console.log(promise);
+             localStorageService.set('userName', user);
              self.setAuthHeaderAndCookie(promise.data);
-             $location.path('/compare');
+             $location.path('/upload');
              return promise;
          }, function(promise) {
              $rootScope.isLoggedIn = false;
@@ -23,6 +23,7 @@ angular.module('ppp').service('LoginService', function($http, backend, $cookies,
         $http.defaults.headers.common['Authorization'] = null;
         $cookies.remove('authorization');
         $rootScope.isLoggedIn = false;
+        localStorageService.remove('userName');
         $rootScope.userName = "";
         $location.path('/compare');
     };
@@ -42,7 +43,6 @@ angular.module('ppp').service('LoginService', function($http, backend, $cookies,
      * @returns {HttpPromise}
      */
     self.ping = function() {
-
         if (!$http.defaults.headers.common['Authorization']) {
             $http.defaults.headers.common['Authorization'] = $cookies.get('authorization');
         }
@@ -50,12 +50,26 @@ angular.module('ppp').service('LoginService', function($http, backend, $cookies,
         return $http.get(backend.url + 'security/ping?tokenId=' + $http.defaults.headers.common['Authorization'])
             .then(function(promise) {
             $rootScope.isLoggedIn = true;
+            $rootScope.userName = localStorageService.get('userName');
             return promise;
         }, function(promise) {
             $rootScope.isLoggedIn = false;
             $rootScope.userName = "";
             return $q.reject(promise.data);
         });
+    };
+
+    self.editUser = function(user,targetUser,pw,targetPw,operation){
+        if(user !== 'admin'){
+            targetUser = user;
+        }
+        $http.get(backend.url + 'security/changeData?tokenId=' + $http.defaults.headers.common['Authorization'] + '&user=' + user
+            + '&pw=' + pw + '&targetUser=' + targetUser + '&targetPw=' + targetPw + '&operation=' + operation);
+
+    };
+
+    self.getUsers = function(pw){
+        return $http.get(backend.url + 'security/getUsers?pw=' + pw);
     };
 
     return self;

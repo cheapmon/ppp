@@ -26,6 +26,7 @@
     "vis": "^4.20.1",
     "angular-cookies": "1.5.11",
     "angular-bootstrap": "^2.5.0",
-    "angular-file-upload": "^2.5.0"
+    "angular-file-upload": "^2.5.0",
+    "angular-local-storage": "^0.7.1"
   }
 }

@@ -33,3 +33,7 @@ textarea {
 .my-drop-zone {
     border: dotted 2px lightgray;
 }
+
+li a:hover {
+    cursor:pointer;
+}

@@ -119,7 +119,6 @@ angular.module('ppp')
                 $scope.dates = response.data;
                 items = [];
                 $('.vis-timeline').remove();
-
                 container = document.getElementById('visualization');
 
                 for (var i = 0; i < $scope.dates.length; i++) {

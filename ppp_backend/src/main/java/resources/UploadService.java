@@ -5,6 +5,7 @@ import representation.Texts;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.json.*;
 
 import tools.TextLoader;
 
@@ -24,13 +26,21 @@ import tools.TextLoader;
 public class UploadService {
 
 
-	@GET
+	@POST
 	@Path("upload")
-	public static void uploadTexts(@PathParam("text") String text, @PathParam("link") String link,
-			@PathParam("date") String date, @PathParam("user") String user)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public static void uploadTexts(JsonObject inputText)
 			throws SQLException {
 		TextLoader tl = new TextLoader();
-		tl.setText(text, link, date, user);
+		String text = inputText.getString("text");
+		String date = inputText.getString("date");
+		String link = inputText.getString("link");
+		String user = inputText.getString("user");
+    	System.out.println(text+ " rest");
+    	System.out.println(link+ " rest");
+    	System.out.println(date+ " rest");
+    	System.out.println(user+ " rest");
+		tl.setText(text,date,link,user);
 
 	}
 	

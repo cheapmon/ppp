@@ -79,6 +79,10 @@ public class TextLoader {
     }
     
     public void setText(String text, String link, String date, String user) throws SQLException{
+    	System.out.println(text);
+    	System.out.println(link);
+    	System.out.println(date);
+    	System.out.println(user);
         //get database instance
         DatabaseInitializer db = DatabaseInitializer.getInstance();
         //set and initialize db connection

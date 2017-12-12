@@ -3,6 +3,8 @@ package tools;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import representation.Texts;
 
@@ -62,6 +64,7 @@ public class UserDataService {
 			ps.setString(1, name.toLowerCase());
 			rs = ps.executeQuery();
 			storedPassword = rs.getString(1);
+			db.connection.close();
 		} catch (SQLException e) {
 			System.out.println("Fehler: Datenbankabfrage");
 			e.printStackTrace();
@@ -84,7 +87,7 @@ public class UserDataService {
 		PreparedStatement ps = null;
 		String hashedPw = BCrypt.hashpw(targetPw, BCrypt.gensalt());
 		try {
-			String insert = "UPDATE login SET password = ?, "
+			String insert = "UPDATE login SET password = ? "
 					+ "WHERE user = ?";
 			ps = db.connection.prepareStatement(insert);
 			ps.setString(1, hashedPw);
@@ -96,7 +99,31 @@ public class UserDataService {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static List<String> getUsers(){
+        //get database instance
+        DatabaseInitializer db = DatabaseInitializer.getInstance();
+        //set and initialize db connection
+        db.connection = null;
+        db.initDBConnection();
+        //initialize result set, statement and list
+        PreparedStatement ps = null;
+        ResultSet rs;
+        List<String> users = new ArrayList<String>();
+        try {
+            String querie = "SELECT user FROM login";
+            ps = db.connection.prepareStatement(querie);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                users.add(rs.getString(1));
+            }
+            db.connection.close();
+        } catch (SQLException e) {
+            System.out.println("Fehler: Datenbankabfrage");
+            e.printStackTrace();
+        }
+		return users;
+	}
 	/**
 	 * used to delete a user
 	 * @param user can not be "admin"
@@ -115,11 +142,12 @@ public class UserDataService {
 				ps = db.connection.prepareStatement(querie);
 				ps.setString(1, user);
 				ps.executeUpdate();
+				DatabaseInitializer.deleteTable(user);
+				db.connection.close();
 			} catch (SQLException e) {
 				System.out.println("Fehler: Datenbankabfrage");
 				e.printStackTrace();
 			}
-			DatabaseInitializer.deleteTable(user);
 		}else {
 			System.out.println("One does not simply remove the admin.");
 		}

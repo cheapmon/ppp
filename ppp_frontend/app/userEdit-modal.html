@@ -1,0 +1,50 @@
+<!-- header of the login field -->
+<div class="modal-header">
+    <button ng-click="cancel()" title="Abbrechen." type="button" class="close" aria-hidden="true" data-dismiss="modal">
+        ×
+    </button>
+    <h3>{{showAdminPanel ? 'Nutzerdaten bearbeiten' : 'Passwort ändern'}}</h3>
+    <form ng-show="showAdminPanel">
+        <div class="form-group">
+            <label for="adminpw">Bitte Admin-Passwort eingeben um Nutzerdaten zu laden:</label>
+            <input type="password" id="adminpw" class="form-control" ng-model="adminpw">
+        </div>
+        <div ng-show="userNames.length > 0"  class="form-group">
+            <label for="sel1">Passwort ändern für:</label>
+            <select class="form-control" id="sel1" ng-model="targetUser">
+                <option ng-repeat="p in userNames">{{p}}</option>
+            </select>
+        </div>
+        <button ng-click="getUsers(adminpw)" class="btn btn-default">Nutzernamen laden</button>
+        <button ng-click="toggleNewUser()" class="btn btn-default">{{newUser ? 'Feld ausblenden' : 'neuen Nutzernamen eingeben'}}</button>
+        <div class="form-group">
+            <label for="targetNewUser">neuer Nutzername: </label>
+            <input id="targetNewUser" class="form-control" ng-model="targetNewUser">
+        </div>
+    </form>
+</div>
+<div class="modal-body">
+    <form action="">
+        <div class="form-group">
+            <label for="pw">aktuelles {{showAdminPanel ? 'Admin-' : ''}}Passwort: </label>
+            <input type="password" id="pw" class="form-control" ng-model="pw">
+        </div>
+        <div class="form-group">
+            <label for="targetPw">neues Passwort {{showAdminPanel ? 'des Nutzers' : ''}} angeben:</label>
+            <input type="password" id="targetPw" class="form-control" ng-model="targetPw">
+        </div>
+        <div class="form-group">
+            <label for="pww">neues Passwort {{showAdminPanel ? 'des Nutzers' : ''}} wiederholen: </label>
+            <input type="password" id="pww" class="form-control" ng-model="pww">
+        </div>
+    </form>
+</div>
+
+
+<div class="modal-footer">
+    <button ng-show="showAdminPanel" ng-click="editUser(targetNewUser,'add')" class="btn btn-info">Nutzer hinzufügen</button>
+    <button ng-show="showAdminPanel" ng-click="editUser('del')" class="btn btn-danger">Nutzer löschen</button>
+    <button data-dismiss="modal" title="Einloggen." class="btn btn-success" ng-click="editUser('edit')">
+        Änderung übernehmen
+    </button>
+</div>
