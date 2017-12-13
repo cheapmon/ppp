@@ -2,14 +2,19 @@
     <table class="table">
         <thead>
         <tr>
-            <th width="33%">Titel</th>
-            <th>Hinzugefügt am</th>
+            <th width="20%">Seite</th>
+            <th>Datum</th>
             <th>Aktionen</th>
-            <th width="33%">Vorschau</th>
+            <th width="33%">Quelle</th>
         </tr>
         </thead>
-        <tbody>
-
+        <tbody  ng-init="loadTexts()">
+        <tr ng-repeat="t in userTexts">
+            <td>{{t.text}}</td>
+            <td>{{t.date}}</td>
+            <td><a  ng-click="removeText(t.link, t.date)"><span class="glyphicon glyphicon-remove"></span></a></td>
+            <td>{{t.link}}</td>
+        </tr>
         </tbody>
     </table>
     <h3>Texte hinzufügen</h3>

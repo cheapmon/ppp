@@ -11,10 +11,16 @@ angular.module('ppp').service('DataService', ['$http', 'backend', function ($htt
     };
 
     data.submitTextToDatabase = function(temp){
-        //var parameter = JSON.stringify(temp);
-        $http.post(backend.url + temp.user.toLowerCase() + "/upload", temp)
-            .success(function(){
-            });
+        return $http.get(backend.url + temp.user.toLowerCase() + "/upload/?date=" + temp.date + '&link=' + temp.link +
+        '&user=' + temp.user.toLowerCase() + '&text=' + temp.text);
+    };
+
+    data.loadTextsfromUDB = function(user){
+        return $http.get(backend.url + user.toLowerCase() + '/load?user=' + user.toLowerCase())
+    };
+
+    data.removeText = function(user, date, link){
+        return $http.get(backend.url + user + '/remove?date=' + date + '&link=' + link);
     };
     return data;
 }]);

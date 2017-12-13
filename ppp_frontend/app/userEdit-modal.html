@@ -17,7 +17,7 @@
         </div>
         <button ng-click="getUsers(adminpw)" class="btn btn-default">Nutzernamen laden</button>
         <button ng-click="toggleNewUser()" class="btn btn-default">{{newUser ? 'Feld ausblenden' : 'neuen Nutzernamen eingeben'}}</button>
-        <div class="form-group">
+        <div ng-show="newUser" class="form-group">
             <label for="targetNewUser">neuer Nutzername: </label>
             <input id="targetNewUser" class="form-control" ng-model="targetNewUser">
         </div>

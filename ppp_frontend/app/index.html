@@ -18,11 +18,8 @@
         <div class="navbar-header">
             <a class="navbar-brand" ng-href="#/compare">Privacy Policy Picker</a>
         </div>
-        <ul class="nav navbar-nav navbar-left">
-            <li><a ng-href="#/upload"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
-        </ul>
-
         <ul class="nav navbar-nav navbar-right" ng-controller="IndexCtrl">
+            <li ng-if="isLoggedIn"><a ng-href="#/upload"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
             <li ng-if="isLoggedIn" ng-click="showModal('userEdit')"><a><span class="glyphicon glyphicon-user"></span> {{userName}}</a></li>
             <li ng-if="isLoggedIn" ng-click="logout()"><a><span class="glyphicon glyphicon-log-out"></span> Ausloggen</a></li>
             <li ng-if="!isLoggedIn" ng-click="showModal('login')"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

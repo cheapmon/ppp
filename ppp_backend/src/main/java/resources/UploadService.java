@@ -13,7 +13,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.json.*;
+import javax.ws.rs.core.Response;
+import org.json.*;
 
 import tools.TextLoader;
 
@@ -26,22 +27,18 @@ import tools.TextLoader;
 public class UploadService {
 
 
-	@POST
+	@GET
 	@Path("upload")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public static void uploadTexts(JsonObject inputText)
+	public static Response uploadTexts(@QueryParam("date") String date, @QueryParam("link") String link,
+			@QueryParam("user") String user, @QueryParam("text") String text)
 			throws SQLException {
 		TextLoader tl = new TextLoader();
-		String text = inputText.getString("text");
-		String date = inputText.getString("date");
-		String link = inputText.getString("link");
-		String user = inputText.getString("user");
     	System.out.println(text+ " rest");
     	System.out.println(link+ " rest");
     	System.out.println(date+ " rest");
     	System.out.println(user+ " rest");
 		tl.setText(text,date,link,user);
-
+		return Response.ok().build();
 	}
 	
 	@GET
@@ -51,6 +48,15 @@ public class UploadService {
 		TextLoader tl = new TextLoader();
 		List<Texts> allTexts = tl.loadTexts(user);
 		return allTexts;
+		
+	}
+	
+	@GET
+	@Path("remove")
+	public static Response removeText(@PathParam("user") String user,@QueryParam("date") String date, @QueryParam("link") String link) throws SQLException{
+		TextLoader tl = new TextLoader();
+		tl.removeText(date, link, user);
+		return Response.ok().build();
 		
 	}
 }

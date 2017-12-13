@@ -70,11 +70,11 @@ public class TextLoader {
                 userTexts.add(t);
                 //System.out.println(t);
             }
+            db.connection.close();
         } catch (SQLException e) {
             System.out.println("Fehler: Datenbankabfrage");
             e.printStackTrace();
         } 
-        db.connection.close();
         return userTexts;
     }
     
@@ -92,11 +92,11 @@ public class TextLoader {
         PreparedStatement ps = null;
         
 		try {
-			String insert = "INSERT INTO "+ user.toLowerCase() +"(text,link,date) VALUES(?,?,?)";
+			String insert = "INSERT INTO "+ user.toLowerCase() +"(text,date,link) VALUES(?,?,?)";
 			ps = db.connection.prepareStatement(insert);
 			ps.setString(1, text);
-			ps.setString(2, link);
-			ps.setString(3, date);
+			ps.setString(2, date);
+			ps.setString(3, link);
 			ps.executeUpdate();
 			db.connection.close();
 		} catch (SQLException e) {
@@ -104,14 +104,25 @@ public class TextLoader {
 			e.printStackTrace();
 		}
     }
-    public static void main (String[] args) {
-    	TextLoader tl = new TextLoader();
-    	try {
-    		DatabaseInitializer.deleteTable("test");
-			tl.setText("Testtext","www.scha.de","22-12-22","apored");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    
+    public void removeText(String date, String link, String user) {
+        //get database instance
+        DatabaseInitializer db = DatabaseInitializer.getInstance();
+        //set and initialize db connection
+        db.connection = null;
+        db.initDBConnection();
+        //initialize result set, statement and list
+        PreparedStatement ps = null;
+        try {
+            String querie = "DELETE FROM " +user.toLowerCase() +" WHERE link = ? AND date = ?";
+            ps = db.connection.prepareStatement(querie);
+            ps.setString(1, link);
+            ps.setString(2, date);
+            ps.executeUpdate();
+            db.connection.close();
+        } catch (SQLException e) {
+            System.out.println("Fehler: Datenbankabfrage");
+            e.printStackTrace();
+        } 
     }
 }

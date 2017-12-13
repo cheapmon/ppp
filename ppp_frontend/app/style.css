@@ -34,6 +34,6 @@ textarea {
     border: dotted 2px lightgray;
 }
 
-li a:hover {
+li a, td:hover {
     cursor:pointer;
 }
