@@ -26,6 +26,9 @@ angular.module('ppp')
             $scope.loadTexts();
         };
 
+        $scope.uploadTextFromFile = function(){
+        };
+
         $scope.removeText = function(date,link){
             DataService.removeText(localStorageService.get('userName'), date ,link);
             $scope.loadTexts();

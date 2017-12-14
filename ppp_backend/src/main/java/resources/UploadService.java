@@ -33,11 +33,11 @@ public class UploadService {
 			@QueryParam("user") String user, @QueryParam("text") String text)
 			throws SQLException {
 		TextLoader tl = new TextLoader();
-    	System.out.println(text+ " rest");
-    	System.out.println(link+ " rest");
-    	System.out.println(date+ " rest");
-    	System.out.println(user+ " rest");
-		tl.setText(text,date,link,user);
+    	System.out.println(text);
+    	System.out.println(link);
+    	System.out.println(date);
+    	System.out.println(user);
+		tl.setText(text,link,date,user);
 		return Response.ok().build();
 	}
 	
@@ -55,7 +55,10 @@ public class UploadService {
 	@Path("remove")
 	public static Response removeText(@PathParam("user") String user,@QueryParam("date") String date, @QueryParam("link") String link) throws SQLException{
 		TextLoader tl = new TextLoader();
-		tl.removeText(date, link, user);
+    	System.out.println("to be removed Link: " +link);
+    	System.out.println("to be removed Date: " +date);
+    	System.out.println("to be removed User: " +user);
+		tl.removeText(link, date, user);
 		return Response.ok().build();
 		
 	}

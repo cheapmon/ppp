@@ -62,11 +62,12 @@ public class TextLoader {
         ResultSet rs;
         List<Texts> userTexts = new ArrayList<Texts>();
         try {
-            String querie = "SELECT TEXT, DATE, LINK FROM "+ user.toLowerCase();
+            String querie = "SELECT TEXT, LINK, DATE FROM "+ user.toLowerCase();
             ps = db.connection.prepareStatement(querie);
             rs = ps.executeQuery();
             while (rs.next()){
-                Texts t = new Texts(rs.getString(1),rs.getString(2), rs.getString(3));
+            	System.out.println(rs.getString(1) + rs.getString(3) + rs.getString(2));
+                Texts t = new Texts(rs.getString(1),rs.getString(3), rs.getString(2));
                 userTexts.add(t);
                 //System.out.println(t);
             }
@@ -79,10 +80,6 @@ public class TextLoader {
     }
     
     public void setText(String text, String link, String date, String user) throws SQLException{
-    	System.out.println(text);
-    	System.out.println(link);
-    	System.out.println(date);
-    	System.out.println(user);
         //get database instance
         DatabaseInitializer db = DatabaseInitializer.getInstance();
         //set and initialize db connection
@@ -90,13 +87,13 @@ public class TextLoader {
         db.initDBConnection();
         //initialize result set, statement and list
         PreparedStatement ps = null;
-        
+        System.out.println("INSERT INTO admin(text,link,date) VALUES("+text+","+link+","+date+")");
 		try {
-			String insert = "INSERT INTO "+ user.toLowerCase() +"(text,date,link) VALUES(?,?,?)";
+			String insert = "INSERT INTO "+ user.toLowerCase() +"(text,link,date) VALUES(?,?,?)";
 			ps = db.connection.prepareStatement(insert);
 			ps.setString(1, text);
-			ps.setString(2, date);
-			ps.setString(3, link);
+			ps.setString(2, link);
+			ps.setString(3, date);
 			ps.executeUpdate();
 			db.connection.close();
 		} catch (SQLException e) {
@@ -106,6 +103,7 @@ public class TextLoader {
     }
     
     public void removeText(String date, String link, String user) {
+    	System.out.println("remove aufgerufen");
         //get database instance
         DatabaseInitializer db = DatabaseInitializer.getInstance();
         //set and initialize db connection
@@ -120,9 +118,16 @@ public class TextLoader {
             ps.setString(2, date);
             ps.executeUpdate();
             db.connection.close();
+            System.out.println("DELETE FROM " +user.toLowerCase() +" WHERE link = "+ link +" AND date = " + date);
         } catch (SQLException e) {
             System.out.println("Fehler: Datenbankabfrage");
             e.printStackTrace();
+            
         } 
+        System.out.println("remove durchgeführt");
+    }
+    public static void main(String[] args) {
+    	TextLoader tl = new TextLoader();
+    	tl.removeText("www.google.de", "1999-29-21","admin");
     }
 }

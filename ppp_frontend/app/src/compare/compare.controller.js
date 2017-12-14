@@ -1,5 +1,5 @@
 angular.module('ppp')
-    .controller('CompareCtrl', function ($scope, backend, DataService) {
+    .controller('CompareCtrl', function ($scope, backend, DataService, localStorageService) {
 
         //text fields
         $scope.text = "";
@@ -50,7 +50,7 @@ angular.module('ppp')
         $scope.diffed = false;
 
         //mode of the diff tool. Default is "words"
-        $scope.diffBy = "words";
+        $scope.diffBy = "sentences";
 
         //TODO Rest-Schnittstelle Seiten
         //provides List of crawled sites
@@ -128,7 +128,7 @@ angular.module('ppp')
                         start: $scope.dates[i].systemDateValue
                     })
                 }
-                timeline = new vis.Timeline(container);
+                var timeline = new vis.Timeline(container);
                 timeline.setOptions(options);
                 timeline.setItems(items);
 
@@ -161,6 +161,11 @@ angular.module('ppp')
 
         };
 
+        $scope.loadTexts = function(){
+            DataService.loadTextsfromUDB(localStorageService.get('userName')).then(function (response) {
+                $scope.userTexts = response.data;
+            });
+        };
         //gets the clicked date and receives the policy
         $scope.fillText = function (isTextOne, textSystemDate) {
 
@@ -184,6 +189,13 @@ angular.module('ppp')
             return true;
         };
 
+        $scope.clD = function(){
+            if($scope.diffBy === 'sentences'){
+                $scope.diffBy = 'words';
+            }else {
+                $scope.diffBy = 'sentences';
+            }
+        };
         //function for the imported diff tool
         $scope.diff = function () {
             /*if($scope.diffed){

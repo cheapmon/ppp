@@ -5,6 +5,7 @@ body {
 
 textarea {
     resize: none;
+    overflow: auto;
 }
 .navbar-btn {
     margin-right: 10%;
@@ -26,14 +27,14 @@ textarea {
 
 .centered {
     margin-top: 60px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 
 .my-drop-zone {
     border: dotted 2px lightgray;
 }
 
-li a, td:hover {
+h4,li a, td:hover {
     cursor:pointer;
 }

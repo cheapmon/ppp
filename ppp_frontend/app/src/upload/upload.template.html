@@ -1,56 +1,91 @@
-<div ng-controller="UploadCtrl">
-    <table class="table">
-        <thead>
-        <tr>
-            <th width="20%">Seite</th>
-            <th>Datum</th>
-            <th>Aktionen</th>
-            <th width="33%">Quelle</th>
-        </tr>
-        </thead>
-        <tbody  ng-init="loadTexts()">
-        <tr ng-repeat="t in userTexts">
-            <td>{{t.text}}</td>
-            <td>{{t.date}}</td>
-            <td><a  ng-click="removeText(t.link, t.date)"><span class="glyphicon glyphicon-remove"></span></a></td>
-            <td>{{t.link}}</td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Texte hinzufügen</h3>
-    <div class="col-md-4">
-        <div ng-show="uploader.isHTML5">
-            <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-                Datei hier ablegen
+<div ng-controller="UploadCtrl" class="centered">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="20%">Seite</th>
+                    <th>Datum</th>
+                    <th>Aktionen</th>
+                    <th width="33%">Quelle</th>
+                </tr>
+                </thead>
+                <tbody ng-init="loadTexts()">
+                <tr ng-repeat="t in userTexts">
+                    <td>{{t.text}}</td>
+                    <td>{{t.date}}</td>
+                    <td><a ng-click="removeText(t.link, t.date)"><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
+                    <td>{{t.link}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title" style="text-align: center">
+                    <a data-toggle="collapse" data-target="#collapseT">Texte hinzufügen</a>
+                </h4>
+            </div>
+            <div id="collapseT" class="panel-collapse collapse">
+                <div class="panel-body" data-toggle="collapse">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="company">Seite:</label>
+                                <input ng-required="true" placeholder="Name der Internetseite" ng-model="company"
+                                       type="text"
+                                       class="form-control" id="company">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="date">Datum:</label>
+                                <input ng-required="true" match="" placeholder="YYYY-MM-DD" ng-model="date" type="text"
+                                       class="form-control" id="date" pattern="{{datePattern}}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="link">Link:</label>
+                                <input ng-required="true" placeholder="www.beispiel.de" ng-model="link" type="text"
+                                       class="form-control"
+                                       id="link">
+                            </div>
+                        </div>
+                        <div class="row" style="padding-left: 15px; padding-right: 15px">
+                            <div class="form-group">
+                                <label for="textbody">Inhalt:</label>
+                                <textarea ng-required="true" placeholder="Hier können Sie ihren eigenen Text einfügen."
+                                          class="form-control" rows="10"
+                                          id="textbody"
+                                          ng-model="text"></textarea>
+                            </div>
+                        </div>
+                        <button ng-click="uploadText()" class="btn btn-default">Upload</button>
+                        <button type="reset" class="btn btn-default">Zurücksetzen</button>
+                    </form>
+                </div>
+                <div class="panel-footer" data-toggle="collapse">
+                    <div class="row" style="padding-left: 15px; padding-right: 15px">
+                        <div class="col-md-1" style="padding-left: 0">
+                            <button ng-click="uploadTextFromFile()" class="btn btn-default">Upload</button>
+                        </div>
+                        <div class="col-md-5">
+                            <div ng-show="uploader.isHTML5">
+                                <div class="well my-drop-zone" nv-file-over="" uploader="uploader"
+                                     style="height: 33px; padding: 5px; margin-bottom: 0">
+                                    Datei hier ablegen
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <h4 class="text-center" style="margin: 5px"> oder </h4>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="file" style="padding-top: 4px" nv-file-select="" uploader="uploader" multiple><br/>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <h4 class="text-center"> oder </h4>
-        <input type="file" nv-file-select="" uploader="uploader" multiple/><br/>
-    </div>
-    <div class="col-md-8">
-        <form>
-            <div class="row">
-                <div class="form-group col-md-9">
-                    <label for="company">Seite:</label>
-                    <input ng-required="true" placeholder="Name der Internetseite" ng-model="company" type="text" class="form-control" id="company">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="date">Datum:</label>
-                    <input ng-required="true" match="" placeholder="YYYY-MM-DD" ng-model="date" type="text" class="form-control" id="date" pattern="{{datePattern}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="link">Link:</label>
-                <input ng-required="true" placeholder="www.beispiel.de" ng-model="link" type="text" class="form-control" id="link">
-            </div>
-            <div class="form-group">
-                <label for="textbody">Inhalt:</label>
-                <textarea ng-required="true" placeholder="Hier können Sie ihren eigenen Text einfügen." class="form-control" rows="10"
-                          id="textbody"
-                          ng-model="text"></textarea>
-            </div>
-            <button ng-click="uploadText()" class="btn btn-default">Upload</button>
-            <button type="reset" class="btn btn-default">Zurücksetzen</button>
-        </form>
     </div>
 </div>
