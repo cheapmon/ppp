@@ -41,8 +41,11 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="date">Datum:</label>
-                                <input ng-required="true" match="" placeholder="YYYY-MM-DD" ng-model="date" type="text"
-                                       class="form-control" id="date" pattern="{{datePattern}}">
+                                <div class="input-group date">
+                                    <input id="date"type="text" class="form-control" placeholder="dd/mm/yyyy"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar" ng-model="date"></i></span>
+                                </div>
+                                <!--<input ng-required="true" match="" placeholder="YYYY-MM-DD" ng-model="date" type="text"
+                                       class="form-control" id="date" pattern="{{datePattern}}">-->
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="link">Link:</label>

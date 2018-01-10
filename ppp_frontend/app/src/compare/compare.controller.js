@@ -247,5 +247,5 @@ angular.module('ppp')
                 $scope.isTextTwoDisplayed = true;
             }
         };
-        $scope.fillDates("google", true);
+        //$scope.fillDates("google", true);
     });

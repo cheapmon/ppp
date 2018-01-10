@@ -20,21 +20,28 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Suche</th>
-                                <th>
+                                <th style="width: 33%">Suche</th>
+                                <th style="width: 33%">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i style="color: #fff" class="glyphicon glyphicon-search"></i></span>
                                         <input ng-model="filterText" type="text" class="form-control" placeholder="Filter">
                                     </div>
                                 </th>
+                                <th style="width: 33%">
+
+                                </th>
                             </tr>
                             </thead>
-                            <tbody ng-init="loadTexts()">
+                            <tbody>
                             <!--<tr ng-repeat="t in userTexts | filter: filterText">
                                 <td ng-click="shut(1);fillDates(name.name)">{{t.text}}</td>
                             </tr> -->
-                            <tr ng-repeat="s in siteNames | filter: filterText">
-                                <td ng-click="shut(1);fillDates(s.name)">{{s.name}}</td>
+                            <tr ng-repeat="s in siteNames| filter: filterText" ng-if="$index % 3 == 0">
+                                <td ng-repeat="i in [$index,$index+1,$index+2]" ng-if="siteNames[i] != null" ng-click="shut(1);fillDates(siteNames[i].name)">{{siteNames[i].name}}</td>
+                            </tr>
+
+                            <tr>
+
                             </tr>
 
                             </tbody>
