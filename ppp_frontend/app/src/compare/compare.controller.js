@@ -52,7 +52,6 @@ angular.module('ppp')
         //mode of the diff tool. Default is "words"
         $scope.diffBy = "sentences";
 
-        //TODO Rest-Schnittstelle Seiten
         //provides List of crawled sites
         $scope.siteNames = [{
             name: "Alternate"
@@ -247,5 +246,13 @@ angular.module('ppp')
                 $scope.isTextTwoDisplayed = true;
             }
         };
-        //$scope.fillDates("google", true);
+
+        $scope.fillDates("google", true);
+        if(localStorageService.get('userName')){
+            //$scope.loadTexts();
+            console.log("eingeloggt");
+        }else{
+            $scope.showOwnTable = false;
+            console.log(" nicht eingeloggt");
+        }
     });

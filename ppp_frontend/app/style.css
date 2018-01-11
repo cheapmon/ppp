@@ -38,3 +38,12 @@ textarea {
 h4,li a, td:hover {
     cursor:pointer;
 }
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: white;
+    color: #333;
+}
+
+.table-hover>tbody>tr>td:hover{
+    background-color: #e0ecff !important;
+    color: #333 !important;
+}
